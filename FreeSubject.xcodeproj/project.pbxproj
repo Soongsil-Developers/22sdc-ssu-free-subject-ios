@@ -11,25 +11,21 @@
 		690DDC9A28B7D5C100C278E1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9928B7D5C100C278E1 /* Then */; };
 		690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9C28B7D5FB00C278E1 /* Realm */; };
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
+		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
 		91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */; };
 		91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91D85F1928BA7993009AAFDA /* FSCalendar */; };
 		C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13628B3598A006AFA0A /* AppDelegate.swift */; };
 		C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13828B3598A006AFA0A /* SceneDelegate.swift */; };
-		C35EB13B28B3598A006AFA0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13A28B3598A006AFA0A /* ViewController.swift */; };
-		C35EB13E28B3598A006AFA0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35EB13C28B3598A006AFA0A /* Main.storyboard */; };
 		C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35EB13F28B3598A006AFA0A /* Assets.xcassets */; };
-		C35EB14328B3598A006AFA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C35EB13328B3598A006AFA0A /* FreeSubject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSubject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35EB13628B3598A006AFA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35EB13828B3598A006AFA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C35EB13A28B3598A006AFA0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C35EB13D28B3598A006AFA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C35EB13F28B3598A006AFA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C35EB14228B3598A006AFA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35EB14428B3598A006AFA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,12 +66,10 @@
 			children = (
 				C35EB13628B3598A006AFA0A /* AppDelegate.swift */,
 				C35EB13828B3598A006AFA0A /* SceneDelegate.swift */,
-				C35EB13A28B3598A006AFA0A /* ViewController.swift */,
-				C35EB13C28B3598A006AFA0A /* Main.storyboard */,
 				C35EB13F28B3598A006AFA0A /* Assets.xcassets */,
-				C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */,
 				C35EB14428B3598A006AFA0A /* Info.plist */,
 				91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */,
+				9191481928BB52710006BFC7 /* CustomTabBarController.swift */,
 			);
 			path = FreeSubject;
 			sourceTree = "<group>";
@@ -151,9 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35EB14328B3598A006AFA0A /* LaunchScreen.storyboard in Resources */,
 				C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */,
-				C35EB13E28B3598A006AFA0A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,32 +157,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */,
-				C35EB13B28B3598A006AFA0A /* ViewController.swift in Sources */,
+				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
 				C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C35EB13C28B3598A006AFA0A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35EB13D28B3598A006AFA0A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35EB14228B3598A006AFA0A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C35EB14528B3598A006AFA0A /* Debug */ = {
@@ -227,6 +200,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -288,6 +262,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -318,7 +293,7 @@
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -346,7 +321,7 @@
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
