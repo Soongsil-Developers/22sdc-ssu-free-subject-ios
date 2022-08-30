@@ -15,6 +15,7 @@ import SwiftUI
 
 class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
 
+    let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     let titleLable:UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -42,14 +43,13 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         return btn
     }()
-    let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setView()
-
+        
     }
 
     
@@ -79,21 +79,17 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             make.width.equalTo(45)
             make.height.equalTo(30)
         }
-        myButtonNextRight.snp.makeConstraints{ (make) in
+        myButtonNextRight.snp.makeConstraints{ make in
             make.top.equalTo(fsCalendar)
             make.trailing.equalTo(fsCalendar)
             make.width.equalTo(45)
             make.height.equalTo(30)
         }
         titleLable.snp.makeConstraints{ make in
-//            make.top.equalToSuperview().offset(50)
-//            make.right.equalToSuperview().offset(-77)
-//            make.left.equalToSuperview().offset(77)
-            make.centerX.equalTo(fsCalendar)
-            make.top.equalToSuperview().offset(50)
-            make.leading.equalToSuperview().offset(80)
-            make.trailing.equalToSuperview().offset(-80)
-            
+            make.top.equalToSuperview().offset(60)
+            make.leading.equalToSuperview().offset(77)
+            make.trailing.equalToSuperview().offset(-77)
+            make.height.equalTo(60)
         }
     }
     
@@ -108,35 +104,3 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }
     
 }
-
-
-
-
-
-//// for PreView
-//struct PreView: PreviewProvider {
-//    static var previews: some View {
-//        CalendarViewController().toPreview()
-//    }
-//}
-//
-//
-//#if DEBUG
-//extension UIViewController {
-//    private struct Preview: UIViewControllerRepresentable {
-//            let viewController: UIViewController
-//
-//            func makeUIViewController(context: Context) -> UIViewController {
-//                return viewController
-//            }
-//
-//            func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-//            }
-//        }
-//
-//        func toPreview() -> some View {
-//            Preview(viewController: self)
-//        }
-//}
-//#endif
-

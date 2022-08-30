@@ -7,23 +7,28 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class CustomTabBarController: UITabBarController{
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let vc1 = CalendarViewController()
-        vc1.title = "캘린더"
-        vc1.navigationItem.largeTitleDisplayMode = .always
-        let nav1 = UINavigationController(rootViewController: vc1)
-        nav1.navigationBar.prefersLargeTitles = true
-        setViewControllers([vc1], animated: false)
+    
+        // create instance
+        let calendarVC = CalendarViewController()
+        let statsVC = StatsViewController()
+        // set title
+        calendarVC.title = "달력"
+        statsVC.title = "통계"
+        // assign view controllers to tab bar
+        self.setViewControllers([calendarVC,statsVC], animated: false)
         
 
+        let imageCalendar = UIImage(named: "calendar")
+        let imageStats = UIImage(named: "stats")
+        guard let items = self.tabBar.items else {return}
+        items[0].image = imageCalendar
+        items[1].image = imageStats
+        
     }
+    
 }
-
-
-
