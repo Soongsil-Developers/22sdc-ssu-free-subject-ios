@@ -29,7 +29,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }()
     lazy var myButtonNextLeft: UIButton = {
         var btn = UIButton()
-        btn.setTitle("<", for: .normal)
+        btn.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        btn.addTarget(self, action: #selector(previousMonthAction), for: .touchUpInside)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
@@ -37,19 +38,19 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }()
     lazy var myButtonNextRight: UIButton = {
         var btn = UIButton()
-        btn.setTitle(">", for: .normal)
+        btn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        btn.addTarget(self, action: #selector(nextMonthAction), for: .touchUpInside)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         return btn
     }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setView()
-        
+
     }
 
     
@@ -58,8 +59,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         view.backgroundColor = .systemBackground
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
-        view.addSubview(myButtonNextLeft)
-        view.addSubview(myButtonNextRight)
+        fsCalendar.addSubview(myButtonNextLeft)
+        fsCalendar.addSubview(myButtonNextRight)
     
         setSNP()
         
@@ -102,5 +103,25 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.weekdayTextColor = .black
         fsCalendar.appearance.headerTitleColor = .black
     }
+
+    @objc func nextMonthAction(sender: UIButton!) {
+        let currentDay = fsCalendar.currentPage
+        var components = DateComponents()
+        let calendar = Calendar(identifier: .gregorian)
+        components.month = 1    // 다음 달 이동
+        let nextDay = calendar.date(byAdding: components, to: currentDay)!
+        fsCalendar.setCurrentPage(nextDay, animated: true)
+    }
     
+    @objc func previousMonthAction(sender: UIButton!) {
+        let currentDay = fsCalendar.currentPage
+        var components = DateComponents()
+        let calendar = Calendar(identifier: .gregorian)
+        components.month = -1   // 이전 달 이동
+        let nextDay = calendar.date(byAdding: components, to: currentDay)!
+        fsCalendar.setCurrentPage(nextDay, animated: true)
+    }
+
 }
+
+
