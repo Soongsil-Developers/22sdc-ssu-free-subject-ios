@@ -11,10 +11,12 @@ import Realm
 import Then
 import FSCalendar
 import SwiftUI
+import Charts
 
 
 class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
-
+    
+    
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     let titleLable:UILabel = {
         let label = UILabel()
@@ -34,6 +36,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
+        
         return btn
     }()
     lazy var myButtonNextRight: UIButton = {
@@ -45,12 +48,11 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         return btn
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setView()
-
     }
 
     
@@ -59,8 +61,10 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         view.backgroundColor = .systemBackground
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
-        fsCalendar.addSubview(myButtonNextLeft)
-        fsCalendar.addSubview(myButtonNextRight)
+        view.addSubview(myButtonNextLeft)
+        view.addSubview(myButtonNextRight)
+        fsCalendar.delegate = self
+        fsCalendar.dataSource = self
     
         setSNP()
         
@@ -102,8 +106,21 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.scrollEnabled = true
         fsCalendar.appearance.weekdayTextColor = .black
         fsCalendar.appearance.headerTitleColor = .black
+        fsCalendar.appearance.eventDefaultColor = UIColor.green
+        fsCalendar.appearance.eventSelectionColor = UIColor.green
+        
     }
-
+    
+    // 날짜 선택 -> 콜백 메소드
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("select")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        print(dateFormatter.string(from: date))
+        presentModalController(inputDate: dateFormatter.string(from: date))
+        
+    }
+    
     @objc func nextMonthAction(sender: UIButton!) {
         let currentDay = fsCalendar.currentPage
         var components = DateComponents()
@@ -111,6 +128,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         components.month = 1    // 다음 달 이동
         let nextDay = calendar.date(byAdding: components, to: currentDay)!
         fsCalendar.setCurrentPage(nextDay, animated: true)
+        print("button")
     }
     
     @objc func previousMonthAction(sender: UIButton!) {
@@ -120,8 +138,17 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         components.month = -1   // 이전 달 이동
         let nextDay = calendar.date(byAdding: components, to: currentDay)!
         fsCalendar.setCurrentPage(nextDay, animated: true)
+        print("button")
     }
-
+    
+    // To be updated
+    func presentModalController(inputDate:String) {
+        let vc = CustomModalViewController()
+        vc.Date = inputDate
+        vc.modalPresentationStyle = .overCurrentContext
+        // keep false
+        // modal animation will be handled in VC itself
+        self.present(vc, animated: false)
+    }
 }
-
 

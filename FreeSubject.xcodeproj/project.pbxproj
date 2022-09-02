@@ -11,8 +11,10 @@
 		690DDC9A28B7D5C100C278E1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9928B7D5C100C278E1 /* Then */; };
 		690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9C28B7D5FB00C278E1 /* Realm */; };
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
+		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
 		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
 		91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AACC7628BE544C00B24988 /* StatsViewController.swift */; };
+		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
 		91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */; };
 		91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91D85F1928BA7993009AAFDA /* FSCalendar */; };
 		C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13628B3598A006AFA0A /* AppDelegate.swift */; };
@@ -21,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
 		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91AACC7628BE544C00B24988 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */,
+				91B45FCB28C098B200BFF72D /* Charts in Frameworks */,
 				690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */,
 				690DDC9728B7C8EC00C278E1 /* SnapKit in Frameworks */,
 				91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */,
@@ -73,6 +77,7 @@
 				91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */,
 				9191481928BB52710006BFC7 /* CustomTabBarController.swift */,
 				91AACC7628BE544C00B24988 /* StatsViewController.swift */,
+				911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */,
 			);
 			path = FreeSubject;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				690DDC9C28B7D5FB00C278E1 /* Realm */,
 				690DDC9E28B7D5FB00C278E1 /* RealmSwift */,
 				91D85F1928BA7993009AAFDA /* FSCalendar */,
+				91B45FCA28C098B200BFF72D /* Charts */,
 			);
 			productName = FreeSubject;
 			productReference = C35EB13328B3598A006AFA0A /* FreeSubject.app */;
@@ -133,6 +139,7 @@
 				690DDC9828B7D5C100C278E1 /* XCRemoteSwiftPackageReference "Then" */,
 				690DDC9B28B7D5FB00C278E1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				91D85F1828BA7993009AAFDA /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = C35EB13428B3598A006AFA0A /* Products */;
 			projectDirPath = "";
@@ -163,6 +170,7 @@
 				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
 				91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */,
+				911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */,
 				C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +398,14 @@
 				kind = branch;
 			};
 		};
+		91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		91D85F1828BA7993009AAFDA /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -420,6 +436,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 690DDC9B28B7D5FB00C278E1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		91B45FCA28C098B200BFF72D /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 		91D85F1928BA7993009AAFDA /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
