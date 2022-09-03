@@ -19,10 +19,9 @@ class SleepTimeDatePickerView: UIView {
     // private var sleepTime: Date?
     // private var sleepTime: String?
     
-    private let title = "어제 수면 시간"
-    
-    lazy var titleLabel = UILabel().then {
-        $0.text = title
+    private let titleLabel = UILabel().then {
+        $0.text = "어제 수면 시간"
+        $0.font = UIFont.systemFont(ofSize: 14)
     }
     
     let attributes = [
@@ -30,7 +29,7 @@ class SleepTimeDatePickerView: UIView {
         NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)
     ]
     
-    lazy var dateTextFiled = UITextField().then {
+    private lazy var dateTextFiled = UITextField().then {
         $0.font = UIFont.systemFont(ofSize: 30)
         $0.attributedPlaceholder = NSAttributedString(string: "Sleep Time", attributes:attributes)
         $0.textAlignment = .center
@@ -39,7 +38,7 @@ class SleepTimeDatePickerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.layer.backgroundColor = UIColor.green.cgColor
+        self.layer.backgroundColor = UIColor.customColor(.writeViewColor).cgColor
         self.layer.cornerRadius = 12
         configureDatePicker()
         setViewHierarchy()

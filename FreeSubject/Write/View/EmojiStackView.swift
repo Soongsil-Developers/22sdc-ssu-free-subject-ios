@@ -11,18 +11,17 @@ import Then
 
 class EmojiStackView: UIView {
     
-    var isActive: Bool = false
+     var emoji: Emoji?
     
-    lazy var emojiButton = UIButton().then {_ in
-    }
+     var emojiButton = UIButton()
     
-    lazy var emojiLabel = UILabel().then {
+     var emojiLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 12)
         $0.textAlignment = .center
         $0.sizeToFit()
     }
     
-    lazy var stackView = UIStackView().then {
+    private let stackView = UIStackView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.spacing = 5
@@ -31,17 +30,13 @@ class EmojiStackView: UIView {
     }
     
     override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setLayouts()
+        super.init(frame: .zero) //오토레이아웃으로 잡는다는 이야기
+        setViewHierarchy()
+        setConstraints()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setLayouts() {
-        setViewHierarchy()
-        setConstraints()
     }
     
     private func setViewHierarchy() {
@@ -51,6 +46,19 @@ class EmojiStackView: UIView {
     }
     
     private func setConstraints() {
+        
+    }
+    
+    func configure(emoji:Emoji) {
+        self.emoji = emoji
+        emojiLabel.text = emoji.labelText
+        emojiButton.setImage(emoji.image, for: .normal)
+        
+    }
+    
+    //선택메서드 -> 델리게이트 불러서 파라미터에 self.icon을 넣는다.
+    
+    func emojiTap() {
         
     }
 }

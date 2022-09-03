@@ -11,21 +11,21 @@ import Then
 
 class MedicineCheckView: UIView {
     
-    private let title = "약 복용"
     
-    lazy var titleLabel = UILabel().then {
-        $0.text = title
+    private let titleLabel = UILabel().then {
+        $0.text = "약 복용"
+        $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    lazy var takingMedicineButton = UIButton().then {
+    private let takingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약복용"), for: .normal)
     }
     
-    lazy var notTakingMedicineButton = UIButton().then {
+    private let notTakingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약미복용"), for: .normal)
     }
     
-    lazy var stackView = UIStackView().then {
+    private let stackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 14
         $0.distribution = .fill
@@ -34,7 +34,7 @@ class MedicineCheckView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.layer.backgroundColor = UIColor.green.cgColor
+        self.layer.backgroundColor = UIColor.customColor(.writeViewColor).cgColor
         self.layer.cornerRadius = 12
         setViewHierarchy()
         setConstraints()
@@ -47,8 +47,8 @@ class MedicineCheckView: UIView {
     private func setViewHierarchy() {
         addSubview(titleLabel)
         addSubview(stackView)
-        stackView.addArrangedSubview(takingMedicineButton)
         stackView.addArrangedSubview(notTakingMedicineButton)
+        stackView.addArrangedSubview(takingMedicineButton)
     }
     
     private func setConstraints() {

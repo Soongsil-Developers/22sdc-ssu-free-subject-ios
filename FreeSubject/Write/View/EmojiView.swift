@@ -9,47 +9,44 @@ import UIKit
 import SnapKit
 import Then
 
-enum Icon: CaseIterable {
-    case Happy
-    case Tranquility
-    case Tough
-    case Sad
-    case Tired
-    case Angry
-    
-    static var iconArray = [Happy,Tranquility,Tough,Sad,Tired,Angry]
+enum Emoji: Int, CaseIterable {
+    case happy
+    case tranquility
+    case tough
+    case sad
+    case tired
+    case angry
     
     var image: UIImage {
         switch self {
-        case .Happy: return UIImage(named: "Happy.png")!
-        case .Tranquility: return UIImage(named: "Tranquility.png")!
-        case .Tough: return UIImage(named: "Tough.png")!
-        case .Sad: return UIImage(named: "Sad.png")!
-        case .Tired: return UIImage(named: "Tired.png")!
-        case .Angry: return UIImage(named: "Angry.png")!
+        case .happy: return UIImage(named: "Happy.png")!
+        case .tranquility: return UIImage(named: "Tranquility.png")!
+        case .tough: return UIImage(named: "Tough.png")!
+        case .sad: return UIImage(named: "Sad.png")!
+        case .tired: return UIImage(named: "Tired.png")!
+        case .angry: return UIImage(named: "Angry.png")!
         }
     }
     
     var labelText: String {
         switch self {
-        case .Happy: return "기쁨"
-        case .Tranquility: return "편안"
-        case .Tough: return "힘듦"
-        case .Sad: return "슬픔"
-        case .Tired: return "피곤"
-        case .Angry: return "화남"
+        case .happy: return "기쁨"
+        case .tranquility: return "편안"
+        case .tough: return "힘듦"
+        case .sad: return "슬픔"
+        case .tired: return "피곤"
+        case .angry: return "화남"
         }
     }
 }
 class EmojiView: UIView {
     
-    private let title = "기분을 선택해줘"
-    
-    lazy var titleLabel = UILabel().then {
-        $0.text = title
+    private let titleLabel = UILabel().then {
+        $0.text = "기분을 선택해줘"
+        $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    lazy var horizontalStackView = UIStackView().then {
+    private let horizontalStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 10
         $0.distribution = .fillEqually
@@ -58,7 +55,7 @@ class EmojiView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.layer.backgroundColor = UIColor.green.cgColor
+        self.layer.backgroundColor = UIColor.customColor(.writeViewColor).cgColor
         self.layer.cornerRadius = 12
         setViewHierarchy()
         setConstraints()
@@ -71,11 +68,11 @@ class EmojiView: UIView {
     
     func setAddStackViews() {
         
-        for i in Icon.iconArray {
+        for emoji in Emoji.allCases {
             let emojiStackView = EmojiStackView()
-            emojiStackView.emojiLabel.text = i.labelText
-            emojiStackView.emojiButton.setImage(i.image, for: .normal)
-            emojiStackView.isActive = true
+            emojiStackView.configure(emoji: emoji)
+//            emojiStackView.emojiLabel.text = i.labelText
+//            emojiStackView.emojiButton.setImage(i.image, for: .normal)
             horizontalStackView.addArrangedSubview(emojiStackView)
         }
         
@@ -89,9 +86,9 @@ class EmojiView: UIView {
     private func setConstraints() {
         
         horizontalStackView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(39)
+            $0.top.equalToSuperview().inset(39)
+            $0.bottom.equalToSuperview().inset(15)
             $0.leading.trailing.equalToSuperview().inset(14)
-            
         }
         
         titleLabel.snp.makeConstraints {

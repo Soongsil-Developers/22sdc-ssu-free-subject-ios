@@ -12,23 +12,23 @@ import Then
 class EmotionalCheckView: UIView {
     
     var EmotionalCheck : Bool?
-
-    private let title = "하루 동안 유의미한 감정 기복이 있었어?"
     
-    lazy var titleLabel = UILabel().then {
-        $0.text = title
+    private let titleLabel = UILabel().then {
+        $0.text = "하루 동안 유의미한 감정 기복이 있었어?"
+        $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    lazy var EmotionalCheckSwitch = UISwitch().then {
+    private let EmotionalCheckSwitch = UISwitch().then {
         //$0.isOn = true
-        $0.onTintColor = UIColor.gray
+        $0.thumbTintColor = UIColor.white
+        $0.onTintColor = UIColor.customColor(.UISwitchColor)
         $0.addTarget(self, action: #selector(onClickSwitch(sender:)), for: .valueChanged)
     }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        self.layer.backgroundColor = UIColor.green.cgColor
+        self.layer.backgroundColor = UIColor.customColor(.writeViewColor).cgColor
         self.layer.cornerRadius = 12
         setViewHierarchy()
         setConstraints()
@@ -40,7 +40,6 @@ class EmotionalCheckView: UIView {
     
     @objc func onClickSwitch(sender: UISwitch) {
             EmotionalCheck = sender.isOn
-            print(EmotionalCheck)
     }
    
     
@@ -48,7 +47,7 @@ class EmotionalCheckView: UIView {
         addSubview(titleLabel)
         addSubview(EmotionalCheckSwitch)
     }
-    
+        
     private func setConstraints() {
         
         titleLabel.snp.makeConstraints {
@@ -59,7 +58,6 @@ class EmotionalCheckView: UIView {
         
         EmotionalCheckSwitch.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(5)
-            $0.centerX.equalTo(titleLabel).offset(-47)
             $0.trailing.equalToSuperview().inset(6)
         }
         
