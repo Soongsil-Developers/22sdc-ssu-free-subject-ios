@@ -31,7 +31,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }()
     lazy var myButtonNextLeft: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        btn.setTitle("<", for: .normal)
         btn.addTarget(self, action: #selector(previousMonthAction), for: .touchUpInside)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
@@ -41,7 +41,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }()
     lazy var myButtonNextRight: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        btn.setTitle(">", for: .normal)
         btn.addTarget(self, action: #selector(nextMonthAction), for: .touchUpInside)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
@@ -58,7 +58,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     func setView(){
         
-        view.backgroundColor = .systemBackground
+ 
+        view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
         view.addSubview(myButtonNextLeft)
@@ -79,16 +80,16 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             make.bottom.equalToSuperview().offset(-200)
         }
         myButtonNextLeft.snp.makeConstraints{ make in
-            make.top.equalTo(fsCalendar)
-            make.leading.equalTo(fsCalendar)
-            make.width.equalTo(45)
-            make.height.equalTo(30)
+            make.top.equalTo(fsCalendar).inset(10)
+            make.leading.equalTo(fsCalendar).inset(15)
+            make.width.equalTo(34)
+            make.height.equalTo(34)
         }
         myButtonNextRight.snp.makeConstraints{ make in
-            make.top.equalTo(fsCalendar)
-            make.trailing.equalTo(fsCalendar)
-            make.width.equalTo(45)
-            make.height.equalTo(30)
+            make.top.equalTo(fsCalendar).inset(10)
+            make.trailing.equalTo(fsCalendar).inset(15)
+            make.width.equalTo(34)
+            make.height.equalTo(34)
         }
         titleLable.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(60)
@@ -108,7 +109,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.headerTitleColor = .black
         fsCalendar.appearance.eventDefaultColor = UIColor.green
         fsCalendar.appearance.eventSelectionColor = UIColor.green
-        
+        fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
+
     }
     
     // 날짜 선택 -> 콜백 메소드

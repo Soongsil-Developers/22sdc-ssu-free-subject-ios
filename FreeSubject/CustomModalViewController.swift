@@ -18,7 +18,7 @@ class CustomModalViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
+        label.backgroundColor = UIColor(red: 0.84, green: 0.9, blue: 0.87, alpha: 1.00)
         label.clipsToBounds = true
         label.layer.cornerRadius = 16
         // 나중에 선택한 날로 변결
@@ -28,30 +28,24 @@ class CustomModalViewController: UIViewController {
     }()
     lazy var iconView1: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
     lazy var iconView2: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
     lazy var iconView3: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
-    lazy var contentStackView: UIStackView = {
-        let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel,iconView2])
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        return stackView
-    }()
-    
+
+    // half-modal 뷰
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
@@ -68,11 +62,27 @@ class CustomModalViewController: UIViewController {
         return view
     }()
     
+    lazy var ButtonForNextView: UIButton = {
+        var btn = UIButton()
+        btn.setTitle("확인하기", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.cornerRadius = 16
+        btn.backgroundColor = UIColor(red: 0.82, green: 0.84, blue: 0.66, alpha: 1.0)
+        btn.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        return btn
+    }()
+    @objc func nextView(_ sender : Any){
+        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다.
+        view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(view, animated: true, completion: nil)
+    }
+    
     
     // Constants
-    let defaultHeight: CGFloat = 400
-    let dismissibleHeight: CGFloat = 200
-    let maximumContainerHeight: CGFloat = 400
+    let defaultHeight: CGFloat = 300   // 처음 half-modal 이 올라오는 높이
+    let dismissibleHeight: CGFloat = 150   // half-modal 없어지는 높이
+    let maximumContainerHeight: CGFloat = 300  // half-modal 최대로 끌어올리는 높이
     // UIScreen.main.bounds.height - 100
     // keep current new height, initial is default height
     var currentContainerHeight: CGFloat = 300
@@ -83,6 +93,7 @@ class CustomModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
         setupConstraints()
         // tap gesture on dimmed view to dismiss
@@ -110,26 +121,49 @@ class CustomModalViewController: UIViewController {
         // Add subviews
         view.addSubview(dimmedView)
         view.addSubview(containerView)
-        containerView.addSubview(contentStackView)
-//        view.addSubview(contentStackView)
+        containerView.addSubview(iconView1)
+        containerView.addSubview(iconView2)
+        containerView.addSubview(iconView3)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(ButtonForNextView)
         
         setSNP()
     }
     
     func setSNP(){
-        contentStackView.snp.makeConstraints{ make in
-//            make.top.equalTo(containerView.fs_top).inset(40)
-//            make.leading.equalTo(containerView.fs_left).inset(20)
-//            make.trailing.equalTo(containerView.fs_right).inset(-20)
-//            make.height.equalTo(60)
-            make.height.equalTo(150)
-            make.top.equalTo(containerView).inset(100)
-//            make.trailing.equalTo(containerView).inset(-30)
-//            make.leading.equalTo(containerView).inset(30)
-            make.left.equalTo(view.fs_left).offset(25)
-            make.right.equalTo(view.fs_right).offset(-50)
-
+        titleLabel.snp.makeConstraints{ make in
+            make.top.equalTo(containerView).offset(33)
+            make.trailing.equalTo(containerView).inset(40)
+            make.leading.equalTo(containerView).inset(40)
+            make.height.equalTo(30)
         }
+        ButtonForNextView.snp.makeConstraints{ make in
+            make.top.equalTo(titleLabel).inset(170)
+            make.centerX.equalTo(containerView)
+            make.height.equalTo(45)
+            make.leading.equalTo(containerView).inset(135)
+            make.trailing.equalTo(containerView).inset(135)
+        }
+        iconView1.snp.makeConstraints{ make in
+            make.top.equalTo(titleLabel).inset(45)
+            make.leading.equalTo(containerView).inset(35)
+            make.height.equalTo(90)
+            make.width.equalTo(90)
+        }
+        iconView2.snp.makeConstraints{ make in
+            make.top.equalTo(titleLabel).inset(45)
+//            make.leading.equalTo(containerView).inset(135)
+            make.centerX.equalTo(titleLabel)
+            make.height.equalTo(90)
+            make.width.equalTo(90)
+        }
+        iconView3.snp.makeConstraints{ make in
+            make.top.equalTo(titleLabel).inset(45)
+            make.trailing.equalTo(containerView).inset(33)
+            make.height.equalTo(90)
+            make.width.equalTo(90)
+        }
+        
         dimmedView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -256,4 +290,7 @@ class CustomModalViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+
 }
+

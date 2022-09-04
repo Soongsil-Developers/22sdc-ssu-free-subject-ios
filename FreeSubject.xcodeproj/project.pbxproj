@@ -12,6 +12,7 @@
 		690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9C28B7D5FB00C278E1 /* Realm */; };
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
 		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
+		914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */; };
 		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
 		91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AACC7628BE544C00B24988 /* StatsViewController.swift */; };
 		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
+		914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryViewController.swift; sourceTree = "<group>"; };
 		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91AACC7628BE544C00B24988 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				9191481928BB52710006BFC7 /* CustomTabBarController.swift */,
 				91AACC7628BE544C00B24988 /* StatsViewController.swift */,
 				911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */,
+				914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */,
 			);
 			path = FreeSubject;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			files = (
 				91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */,
 				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
+				914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
 				91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */,
 				911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */,

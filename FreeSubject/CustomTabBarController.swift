@@ -30,5 +30,4 @@ class CustomTabBarController: UITabBarController{
         items[1].image = imageStats
         
     }
-    
 }
