@@ -58,9 +58,10 @@ class SleepTimeDatePickerView: UIView {
          
          let toolBar = UIToolbar()
          toolBar.barStyle = .default
+         toolBar.isTranslucent = true
+         toolBar.tintColor = UIColor.black
          toolBar.sizeToFit()
-         //toolBar.isTranslucent = true
-         //let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+         
          let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onClickDoneButton))
          toolBar.setItems([doneButton], animated: true)
          
