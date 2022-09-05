@@ -30,8 +30,10 @@ class SleepTimeDatePickerView: UIView {
     ]
     
     private lazy var dateTextFiled = UITextField().then {
-        $0.font = UIFont.systemFont(ofSize: 30)
+        $0.font = UIFont.systemFont(ofSize: 24)
         $0.attributedPlaceholder = NSAttributedString(string: "Sleep Time", attributes:attributes)
+        $0.layer.backgroundColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1).cgColor
+        $0.layer.cornerRadius = 15
         $0.textAlignment = .center
     }
     
@@ -93,9 +95,9 @@ class SleepTimeDatePickerView: UIView {
         }
         
         dateTextFiled.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(13.26)
-            $0.bottom.equalToSuperview().inset(20)
-            $0.leading.trailing.equalToSuperview().inset(44)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(2.26)
+            $0.bottom.equalToSuperview().inset(12)
+            $0.leading.trailing.equalToSuperview().inset(34)
         }
         
     }

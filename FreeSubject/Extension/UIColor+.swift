@@ -28,11 +28,11 @@ extension UIColor {
     static func customColor(_ color: CustomColor) -> UIColor {
         switch color {
         case .writeViewColor:
-            return UIColor(red: 0.84, green: 0.904, blue: 0.866, alpha: 1)
+            return UIColor(red: 0.67, green: 0.85, blue: 0.74, alpha: 1)
         case .defaultBackgroundColor:
             return UIColor(red: 0.118, green: 0.118, blue: 0.118, alpha: 1)
         case .defaultGrayColor:
-            return UIColor(red: 0.969, green: 0.973, blue: 0.973, alpha: 1)
+            return UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
         case .UISwitchColor:
             return UIColor(red: 0.607, green: 0.775, blue: 0.675, alpha: 1)
         }
