@@ -11,24 +11,31 @@ import Then
 
 class MedicineCheckView: UIView {
     
+    var medicineCheck : Bool?
     
     private let titleLabel = UILabel().then {
         $0.text = "약 복용"
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    private let takingMedicineButton = UIButton().then {
+    lazy var takingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약복용"), for: .normal)
+        $0.layer.cornerRadius =  25
+        $0.layer.masksToBounds = true
+        $0.addTarget(self, action: #selector(onClickMedicineBtn(sender:)), for: .touchUpInside)
     }
     
-    private let notTakingMedicineButton = UIButton().then {
+    lazy var notTakingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약미복용"), for: .normal)
+        $0.layer.cornerRadius = 25
+        $0.layer.masksToBounds = true
+        $0.addTarget(self, action: #selector(onClickMedicineBtn(sender:)), for: .touchUpInside)
     }
     
     private let stackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 14
-        $0.distribution = .fill
+        $0.distribution = .fillEqually
     }
     
     override init(frame: CGRect) {
@@ -65,5 +72,31 @@ class MedicineCheckView: UIView {
             $0.trailing.equalToSuperview().inset(7)
         }
         
+    }
+    
+    @objc func onClickMedicineBtn(sender: UIButton) {
+        
+        switch sender {
+        case takingMedicineButton:
+            
+            takingMedicineButton.layer.borderWidth = 3
+            takingMedicineButton.layer.borderColor = UIColor.black.cgColor
+            
+            notTakingMedicineButton.layer.borderWidth = 0
+            
+            self.medicineCheck = true
+            
+        case notTakingMedicineButton:
+            
+            notTakingMedicineButton.layer.borderWidth = 3
+            notTakingMedicineButton.layer.borderColor = UIColor.black.cgColor
+            
+            takingMedicineButton.layer.borderWidth = 0
+            
+            self.medicineCheck = false
+            
+        default:
+            print("Error")
+        }
     }
 }
