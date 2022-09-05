@@ -34,7 +34,7 @@ extension UIColor {
         case .defaultGrayColor:
             return UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
         case .UISwitchColor:
-            return UIColor(red: 0.607, green: 0.775, blue: 0.675, alpha: 1)
+            return UIColor(red: 0.08, green: 0.5, blue: 0.25, alpha: 1)
         }
     }
 }

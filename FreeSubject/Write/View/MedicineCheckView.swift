@@ -20,14 +20,14 @@ class MedicineCheckView: UIView {
     
     lazy var takingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약복용"), for: .normal)
-        $0.layer.cornerRadius =  25
+        $0.layer.cornerRadius =  24.5
         $0.layer.masksToBounds = true
         $0.addTarget(self, action: #selector(onClickMedicineBtn(sender:)), for: .touchUpInside)
     }
     
     lazy var notTakingMedicineButton = UIButton().then {
         $0.setImage(UIImage(named: "약미복용"), for: .normal)
-        $0.layer.cornerRadius = 25
+        $0.layer.cornerRadius = 24.5
         $0.layer.masksToBounds = true
         $0.addTarget(self, action: #selector(onClickMedicineBtn(sender:)), for: .touchUpInside)
     }
