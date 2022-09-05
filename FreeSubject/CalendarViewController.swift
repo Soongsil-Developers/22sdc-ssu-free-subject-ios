@@ -18,32 +18,25 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var selectedDate: Date = Date()
+    let dateFormatter = DateFormatter()
+
     let titleLable:UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
         label.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         label.clipsToBounds = true
-        label.layer.cornerRadius = 16
+        label.layer.cornerRadius = 10
         label.text = "AppName"
         label.font = .systemFont(ofSize: 20, weight: .regular)
         return label
     }()
-    lazy var myButtonNextLeft: UIButton = {
+    lazy var goToThisMonth:UIButton = {
         var btn = UIButton()
-        btn.setTitle("<", for: .normal)
-        btn.addTarget(self, action: #selector(previousMonthAction), for: .touchUpInside)
-        btn.setTitleColor(.white, for: .normal)
-        btn.layer.cornerRadius = 16
-        btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
-        
-        return btn
-    }()
-    lazy var myButtonNextRight: UIButton = {
-        var btn = UIButton()
-        btn.setTitle(">", for: .normal)
-        btn.addTarget(self, action: #selector(nextMonthAction), for: .touchUpInside)
-        btn.setTitleColor(.white, for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.uturn.left"), for: .normal)
+        btn.addTarget(self, action: #selector(currentBtnClicked), for: .touchUpInside)
+        btn.tintColor = .black
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         return btn
@@ -62,8 +55,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
-        view.addSubview(myButtonNextLeft)
-        view.addSubview(myButtonNextRight)
+
+        view.addSubview(goToThisMonth)
         fsCalendar.delegate = self
         fsCalendar.dataSource = self
     
@@ -79,18 +72,13 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             make.trailing.equalTo(titleLable.fs_right).inset(20)
             make.bottom.equalToSuperview().offset(-200)
         }
-        myButtonNextLeft.snp.makeConstraints{ make in
-            make.top.equalTo(fsCalendar).inset(10)
-            make.leading.equalTo(fsCalendar).inset(15)
-            make.width.equalTo(34)
-            make.height.equalTo(34)
-        }
-        myButtonNextRight.snp.makeConstraints{ make in
+        goToThisMonth.snp.makeConstraints{ make in
             make.top.equalTo(fsCalendar).inset(10)
             make.trailing.equalTo(fsCalendar).inset(15)
             make.width.equalTo(34)
             make.height.equalTo(34)
         }
+
         titleLable.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(60)
             make.leading.equalToSuperview().offset(77)
@@ -112,11 +100,9 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
 
     }
-    
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("select")
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         print(dateFormatter.string(from: date))
         presentModalController(inputDate: dateFormatter.string(from: date))
@@ -152,5 +138,12 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // modal animation will be handled in VC itself
         self.present(vc, animated: false)
     }
-}
 
+    // 현재 달로 돌아오기 위한 함수
+//    @IBOutlet weak var currentBtn: UIButton!
+    @objc func currentBtnClicked(sender: UIButton!) {
+        print(Date())   // 실제 오늘 날짜가 출력됨.
+        self.fsCalendar.setCurrentPage(Date(), animated: true)
+    }
+
+}

@@ -17,8 +17,9 @@ class CustomModalViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+
         label.textAlignment = .center
-        label.backgroundColor = UIColor(red: 0.84, green: 0.9, blue: 0.87, alpha: 1.00)
+        label.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         label.clipsToBounds = true
         label.layer.cornerRadius = 16
         // 나중에 선택한 날로 변결
@@ -28,19 +29,19 @@ class CustomModalViewController: UIViewController {
     }()
     lazy var iconView1: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
     lazy var iconView2: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
     lazy var iconView3: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.94, green: 0.96, blue: 0.95, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         view.layer.cornerRadius = 16
         return view
     }()
@@ -67,22 +68,16 @@ class CustomModalViewController: UIViewController {
         btn.setTitle("확인하기", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
-        btn.backgroundColor = UIColor(red: 0.82, green: 0.84, blue: 0.66, alpha: 1.0)
+        btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)
         btn.addTarget(self, action: #selector(nextView), for: .touchUpInside)
         return btn
     }()
-    @objc func nextView(_ sender : Any){
-        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다.
-        view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(view, animated: true, completion: nil)
-    }
     
     
     // Constants
     let defaultHeight: CGFloat = 300   // 처음 half-modal 이 올라오는 높이
     let dismissibleHeight: CGFloat = 150   // half-modal 없어지는 높이
-    let maximumContainerHeight: CGFloat = 300  // half-modal 최대로 끌어올리는 높이
+    let maximumContainerHeight: CGFloat = 600  // half-modal 최대로 끌어올리는 높이
     // UIScreen.main.bounds.height - 100
     // keep current new height, initial is default height
     var currentContainerHeight: CGFloat = 300
@@ -291,6 +286,11 @@ class CustomModalViewController: UIViewController {
         }
     }
     
-
+    @objc func nextView(_ sender : Any){
+        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다.
+        view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(view, animated: true, completion: nil)
+    }
 }
 
