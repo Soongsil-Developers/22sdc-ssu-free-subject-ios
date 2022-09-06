@@ -7,11 +7,12 @@
 import Foundation
 import SnapKit
 import UIKit
-import Realm
+import RealmSwift
 import Then
 import FSCalendar
 import SwiftUI
 import Charts
+
 
 
 class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
@@ -20,6 +21,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var selectedDate: Date = Date()
     let dateFormatter = DateFormatter()
+    
 
     let titleLable:UILabel = {
         let label = UILabel()
@@ -47,11 +49,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // Do any additional setup after loading the view.
         setView()
     }
-
     
     func setView(){
-        
- 
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
@@ -60,6 +59,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.delegate = self
         fsCalendar.dataSource = self
     
+        createDateDB()
         setSNP()
         
     }
@@ -140,10 +140,39 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }
 
     // 현재 달로 돌아오기 위한 함수
-//    @IBOutlet weak var currentBtn: UIButton!
     @objc func currentBtnClicked(sender: UIButton!) {
         print(Date())   // 실제 오늘 날짜가 출력됨.
         self.fsCalendar.setCurrentPage(Date(), animated: true)
     }
+    
+    // Realm 생성
+    func createDateDB(){
+        let realm = try! Realm()
+        let date1 = Day(Date: "2022-09-03", iconFeeling: "smile", sleepTime: "8:30", didFeelingChange: false, didTakeMedicine: true, tableNum: 2)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        try! realm.write{
+            realm.add(date1)
+        }
+    }
+    
+    // 아예 Realm 파일 삭제 Realm 의 요소들을 변경하면 한번씩 해줘야 한다...
+    func resetDB(){
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        let realmURLs = [
+          realmURL,
+          realmURL.appendingPathExtension("lock"),
+          realmURL.appendingPathExtension("note"),
+          realmURL.appendingPathExtension("management")
+        ]
+
+        for URL in realmURLs {
+          do {
+            try FileManager.default.removeItem(at: URL)
+          } catch {
+            // handle error
+          }
+        }
+    }
+    
 
 }
