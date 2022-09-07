@@ -23,6 +23,7 @@
 		69BF973228C380B400B35AEA /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973128C380B400B35AEA /* UIStackView+.swift */; };
 		69BF973428C3810500B35AEA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973328C3810500B35AEA /* UIView+.swift */; };
 		69BF973628C384C100B35AEA /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973528C384C100B35AEA /* UIColor+.swift */; };
+		69BF973928C7F0A200B35AEA /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973828C7F0A200B35AEA /* UIButton+.swift */; };
 		69F5444628BB648B0067277D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444528BB648B0067277D /* ContentViewController.swift */; };
 		69F5444A28BB6BA30067277D /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444928BB6BA30067277D /* EmojiView.swift */; };
 		69F5444C28BC604B0067277D /* EmojiStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444B28BC604B0067277D /* EmojiStackView.swift */; };
@@ -35,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		690DDCAC28BB365B00C278E1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteViewController.swift; path = ../WriteViewController.swift; sourceTree = "<group>"; };
+		690DDCAC28BB365B00C278E1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		69A5F51828BB566200D2B283 /* Calendar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calendar; sourceTree = "<group>"; };
 		69BF972628BE434800B35AEA /* SleepTimeDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeDatePickerView.swift; sourceTree = "<group>"; };
 		69BF972828BE722600B35AEA /* MedicineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineCheckView.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		69BF973128C380B400B35AEA /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		69BF973328C3810500B35AEA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		69BF973528C384C100B35AEA /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		69BF973828C7F0A200B35AEA /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		69F5444528BB648B0067277D /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		69F5444928BB6BA30067277D /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		69F5444B28BC604B0067277D /* EmojiStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStackView.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		69BF972428BE40E500B35AEA /* Write */ = {
 			isa = PBXGroup;
 			children = (
-				69F5444528BB648B0067277D /* ContentViewController.swift */,
+				690DDCAC28BB365B00C278E1 /* WriteViewController.swift */,
 				69A5F51828BB566200D2B283 /* Calendar */,
 				69BF972528BE410000B35AEA /* View */,
 			);
@@ -105,6 +107,7 @@
 				69BF973128C380B400B35AEA /* UIStackView+.swift */,
 				69BF973328C3810500B35AEA /* UIView+.swift */,
 				69BF973528C384C100B35AEA /* UIColor+.swift */,
+				69BF973828C7F0A200B35AEA /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -131,10 +134,10 @@
 				69BF973028C379DC00B35AEA /* Extension */,
 				69BF972428BE40E500B35AEA /* Write */,
 				C35EB13828B3598A006AFA0A /* SceneDelegate.swift */,
-				C35EB13628B3598A006AFA0A /* AppDelegate.swift */,
 				C35EB13A28B3598A006AFA0A /* ViewController.swift */,
+				69F5444528BB648B0067277D /* ContentViewController.swift */,
+				C35EB13628B3598A006AFA0A /* AppDelegate.swift */,
 				C35EB13C28B3598A006AFA0A /* Main.storyboard */,
-				690DDCAC28BB365B00C278E1 /* WriteViewController.swift */,
 				C35EB13F28B3598A006AFA0A /* Assets.xcassets */,
 				C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */,
 				C35EB14428B3598A006AFA0A /* Info.plist */,
@@ -244,6 +247,7 @@
 				69F5444628BB648B0067277D /* ContentViewController.swift in Sources */,
 				69BF972728BE434800B35AEA /* SleepTimeDatePickerView.swift in Sources */,
 				69BF973628C384C100B35AEA /* UIColor+.swift in Sources */,
+				69BF973928C7F0A200B35AEA /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

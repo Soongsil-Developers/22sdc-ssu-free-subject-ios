@@ -9,16 +9,22 @@ import UIKit
 import SnapKit
 import Then
 
+protocol EmotionalCheckDelegate: AnyObject {
+    func emotionalCheck()
+}
+
 class EmotionalCheckView: UIView {
     
     var EmotionalCheck : Bool?
+    
+    weak var delegate: EmotionalCheckDelegate?
     
     private let titleLabel = UILabel().then {
         $0.text = "하루 동안 유의미한 감정 기복이 있었어?"
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    private let EmotionalCheckSwitch = UISwitch().then {
+    private let emotionalCheckSwitch = UISwitch().then {
         //$0.isOn = true
         $0.thumbTintColor = UIColor.white
         $0.onTintColor = UIColor.customColor(.UISwitchColor)
@@ -40,12 +46,13 @@ class EmotionalCheckView: UIView {
     
     @objc func onClickSwitch(sender: UISwitch) {
             EmotionalCheck = sender.isOn
+            self.delegate?.emotionalCheck()
     }
    
     
     private func setViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(EmotionalCheckSwitch)
+        addSubview(emotionalCheckSwitch)
     }
         
     private func setConstraints() {
@@ -56,7 +63,7 @@ class EmotionalCheckView: UIView {
             $0.leading.equalToSuperview().inset(13)
         }
         
-        EmotionalCheckSwitch.snp.makeConstraints {
+        emotionalCheckSwitch.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(5)
             $0.trailing.equalToSuperview().inset(6)
         }

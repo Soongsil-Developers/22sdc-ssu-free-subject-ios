@@ -9,9 +9,13 @@ import UIKit
 import SnapKit
 import Then
 
+protocol MedicineCheckDelegate: AnyObject {
+    func medicineCheckEnabledSaveBtn(medicine: Bool)
+}
+
 class MedicineCheckView: UIView {
     
-    var medicineCheck : Bool?
+    weak var delegate: MedicineCheckDelegate?
     
     private let titleLabel = UILabel().then {
         $0.text = "약 복용"
@@ -75,7 +79,6 @@ class MedicineCheckView: UIView {
     }
     
     @objc func onClickMedicineBtn(sender: UIButton) {
-        
         switch sender {
         case takingMedicineButton:
             
@@ -84,7 +87,8 @@ class MedicineCheckView: UIView {
             
             notTakingMedicineButton.layer.borderWidth = 0
             
-            self.medicineCheck = true
+            self.delegate?.medicineCheckEnabledSaveBtn(medicine: true)
+           
             
         case notTakingMedicineButton:
             
@@ -92,8 +96,8 @@ class MedicineCheckView: UIView {
             notTakingMedicineButton.layer.borderColor = UIColor.black.cgColor
             
             takingMedicineButton.layer.borderWidth = 0
-            
-            self.medicineCheck = false
+        
+            self.delegate?.medicineCheckEnabledSaveBtn(medicine: false)
             
         default:
             print("Error")

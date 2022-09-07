@@ -24,11 +24,11 @@ class ContentScrollView: UIView {
         $0.layer.backgroundColor = UIColor.customColor(.defaultGrayColor).cgColor
     }
     
-    private let emojiView = EmojiView()
+    let emojiView = EmojiView()
     
-    private let sleepTimeDatePickerView = SleepTimeDatePickerView()
+    let sleepTimeDatePickerView = SleepTimeDatePickerView()
     
-    private let medicineCheckView = MedicineCheckView()
+    let medicineCheckView = MedicineCheckView()
     
     //sleepTimeDatePickerView와 medicineCheckView 합친 horizontal StackView
     private let stackView = UIStackView().then {
@@ -37,9 +37,9 @@ class ContentScrollView: UIView {
         $0.distribution = .fillEqually
     }
     
-    private let emotionalCheckView = EmotionalCheckView()
+    let emotionalCheckView = EmotionalCheckView()
     
-    private let todayQuestionView = TodayQuestionView()
+    let todayQuestionView = TodayQuestionView()
     
     required init?(coder: NSCoder) {
            super.init(coder: coder)

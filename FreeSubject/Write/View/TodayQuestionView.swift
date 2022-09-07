@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol TodayQuestionCheckDelegate: AnyObject {
+    func TodayQuestionCheckEnabledSaveBtn(question: String)
+}
+
 class TodayQuestionView: UIView {
     
    
@@ -16,6 +20,8 @@ class TodayQuestionView: UIView {
   var question = ["극도로 심한 들끔으로 입원중에도 증상 조절이 안도니느 상태이다. 10", "극도로 들뜸, 환청이나 망상이 심하여 입원을 요하는 상태다 7", "감당하기 힘들 만큼 일을 벌이고 기고만장하다. 4","오버한다, 나선다, 설친다, 자신감이 지나치다. 3", "말이나 하고싶은게 많고 의욕, 자신감이 차있다. 2", "기분이 좋고, 즐겁고, 신나고 의욕적이다. 1", "기분이 보통이고 편안한 상태. 0", "시큰둥하고 의욕이 다소 떨어지나, 할 일은 다 한다. -1"]
     
     var text = ""
+    
+    weak var delegate: TodayQuestionCheckDelegate?
     
     private let titleLabel = UILabel().then {
         $0.text = "오늘의 질문"
@@ -36,7 +42,7 @@ class TodayQuestionView: UIView {
         $0.isScrollEnabled = false
     }
     
-    private let firstQuestionStackView = UIStackView().then {
+    let firstQuestionStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 9
         $0.distribution = .fill
@@ -47,7 +53,7 @@ class TodayQuestionView: UIView {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     
-    private let secondQuestionTextView = UITextView().then {
+    let secondQuestionTextView = UITextView().then {
         $0.font = UIFont.systemFont(ofSize: 12)
         $0.layer.cornerRadius = 5
         $0.clipsToBounds = true
@@ -83,7 +89,6 @@ class TodayQuestionView: UIView {
     private let thirdQuestionStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 9
-        //$0.alignment = .fill
         $0.distribution = .fill
     }
     
@@ -123,6 +128,7 @@ class TodayQuestionView: UIView {
         self.questionPicker.selectRow(row, inComponent: 0, animated: false)
         self.thirdQuestionTextField.text = self.question[row]
         self.thirdQuestionTextField.resignFirstResponder()
+        self.delegate?.TodayQuestionCheckEnabledSaveBtn(question: thirdQuestionTextField.text!)
     }
 
     override init(frame: CGRect) {

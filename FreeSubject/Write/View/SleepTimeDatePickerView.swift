@@ -9,15 +9,17 @@ import UIKit
 import SnapKit
 import Then
 
+protocol SleepTimeCheckDelegate: AnyObject {
+    func SleepTimeCheckEnabledSaveBtn(sleepTime: String)
+}
+
 class SleepTimeDatePickerView: UIView {
     
+    weak var delegate: SleepTimeCheckDelegate?
     
-    //date picker 로 바꾸기 프로퍼티
+    private var sleepTime: String?
+    
     private let datePicker = UIDatePicker()
-    
-    // 데이트 피커 에서 선택된 데이트 값 (옵셔널)
-    // private var sleepTime: Date?
-    // private var sleepTime: String?
     
     private let titleLabel = UILabel().then {
         $0.text = "어제 수면 시간"
@@ -71,11 +73,12 @@ class SleepTimeDatePickerView: UIView {
          self.dateTextFiled.inputView = self.datePicker
      }
     
-    //addTarget 두번쨰 파라미터 셀렉터 메서드
+
       @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
           let formmater = DateFormatter()
           formmater.dateFormat = "HH:mm"
           self.dateTextFiled.text = formmater.string(from: datePicker.date)
+          self.delegate?.SleepTimeCheckEnabledSaveBtn(sleepTime: dateTextFiled.text!)
       }
     
     @objc func onClickDoneButton() {
