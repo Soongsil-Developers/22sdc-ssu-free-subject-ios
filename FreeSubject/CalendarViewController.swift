@@ -25,12 +25,12 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
 
     let titleLable:UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
-        label.text = "AppName"
+        label.text = "app name"
         label.font = .systemFont(ofSize: 20, weight: .regular)
         return label
     }()
@@ -45,8 +45,13 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setView()
+        print("CalendarViewController")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setView()
     }
     
@@ -59,7 +64,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.delegate = self
         fsCalendar.dataSource = self
     
-        createDateDB()
+        resetDB()
+//        createDateDB()
         setSNP()
         
     }
@@ -100,6 +106,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
 
     }
+    
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("select")
@@ -107,26 +114,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         print(dateFormatter.string(from: date))
         presentModalController(inputDate: dateFormatter.string(from: date))
         
-    }
-    
-    @objc func nextMonthAction(sender: UIButton!) {
-        let currentDay = fsCalendar.currentPage
-        var components = DateComponents()
-        let calendar = Calendar(identifier: .gregorian)
-        components.month = 1    // 다음 달 이동
-        let nextDay = calendar.date(byAdding: components, to: currentDay)!
-        fsCalendar.setCurrentPage(nextDay, animated: true)
-        print("button")
-    }
-    
-    @objc func previousMonthAction(sender: UIButton!) {
-        let currentDay = fsCalendar.currentPage
-        var components = DateComponents()
-        let calendar = Calendar(identifier: .gregorian)
-        components.month = -1   // 이전 달 이동
-        let nextDay = calendar.date(byAdding: components, to: currentDay)!
-        fsCalendar.setCurrentPage(nextDay, animated: true)
-        print("button")
     }
     
     // To be updated

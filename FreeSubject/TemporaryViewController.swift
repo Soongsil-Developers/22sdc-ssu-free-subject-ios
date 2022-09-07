@@ -25,6 +25,7 @@ class TemporaryViewController:UIViewController{
     }()
 
     override func viewDidLoad() {
+        print("TemporaryViewVontroller")
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(ButtonForNextView)

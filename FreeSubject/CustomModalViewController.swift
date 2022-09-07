@@ -87,6 +87,7 @@ class CustomModalViewController: UIViewController {
     var containerViewBottomConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
+        print("CustomModalViewController")
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
@@ -287,7 +288,7 @@ class CustomModalViewController: UIViewController {
     }
     
     @objc func nextView(_ sender : Any){
-        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다.
+        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다. TemporaryViewController 대신해서
         view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.present(view, animated: true, completion: nil)

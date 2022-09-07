@@ -11,11 +11,13 @@ import SnapKit
 
 class CustomTabBarController: UITabBarController{
     override func viewDidLoad() {
+        print("CustomTabBarController")
         super.viewDidLoad()
     
         // create instance
         let calendarVC = CalendarViewController()
-        let statsVC = StatsViewController()
+//        let statsVC = StatsViewController()
+        let statsVC = LineChartViewController()
         // set title
         calendarVC.title = "달력"
         statsVC.title = "통계"

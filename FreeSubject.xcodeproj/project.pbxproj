@@ -14,8 +14,10 @@
 		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
 		914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */; };
 		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
-		91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AACC7628BE544C00B24988 /* StatsViewController.swift */; };
 		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
+		91BED6D528C86BAD00837AFF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */; };
+		91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6DA28C880ED00837AFF /* LineChartViewController.swift */; };
+		91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6E028C8901B00837AFF /* LineChartView.swift */; };
 		91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */; };
 		91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91D85F1928BA7993009AAFDA /* FSCalendar */; };
 		91F040D828C646FA0049CAA7 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F040D728C646FA0049CAA7 /* Day.swift */; };
@@ -28,7 +30,9 @@
 		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
 		914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryViewController.swift; sourceTree = "<group>"; };
 		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		91AACC7628BE544C00B24988 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		91BED6DA28C880ED00837AFF /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
+		91BED6E028C8901B00837AFF /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		91F040D728C646FA0049CAA7 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C35EB13328B3598A006AFA0A /* FreeSubject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSubject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,10 +84,12 @@
 				C35EB14428B3598A006AFA0A /* Info.plist */,
 				91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */,
 				9191481928BB52710006BFC7 /* CustomTabBarController.swift */,
-				91AACC7628BE544C00B24988 /* StatsViewController.swift */,
 				911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */,
 				914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */,
 				91F040D728C646FA0049CAA7 /* Day.swift */,
+				91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */,
+				91BED6DA28C880ED00837AFF /* LineChartViewController.swift */,
+				91BED6E028C8901B00837AFF /* LineChartView.swift */,
 			);
 			path = FreeSubject;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BED6D528C86BAD00837AFF /* Launch Screen.storyboard in Resources */,
 				C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,11 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */,
+				91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */,
 				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
 				914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
+				91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */,
 				91F040D828C646FA0049CAA7 /* Day.swift in Sources */,
-				91AACC7728BE544C00B24988 /* StatsViewController.swift in Sources */,
 				911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */,
 				C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */,
 			);
@@ -312,7 +320,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -340,7 +349,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
