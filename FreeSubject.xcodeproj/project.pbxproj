@@ -24,7 +24,6 @@
 		69BF973428C3810500B35AEA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973328C3810500B35AEA /* UIView+.swift */; };
 		69BF973628C384C100B35AEA /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973528C384C100B35AEA /* UIColor+.swift */; };
 		69BF973928C7F0A200B35AEA /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF973828C7F0A200B35AEA /* UIButton+.swift */; };
-		69F5444628BB648B0067277D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444528BB648B0067277D /* ContentViewController.swift */; };
 		69F5444A28BB6BA30067277D /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444928BB6BA30067277D /* EmojiView.swift */; };
 		69F5444C28BC604B0067277D /* EmojiStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5444B28BC604B0067277D /* EmojiStackView.swift */; };
 		C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13628B3598A006AFA0A /* AppDelegate.swift */; };
@@ -47,7 +46,6 @@
 		69BF973328C3810500B35AEA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		69BF973528C384C100B35AEA /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		69BF973828C7F0A200B35AEA /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
-		69F5444528BB648B0067277D /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		69F5444928BB6BA30067277D /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		69F5444B28BC604B0067277D /* EmojiStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiStackView.swift; sourceTree = "<group>"; };
 		C35EB13328B3598A006AFA0A /* FreeSubject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSubject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +133,6 @@
 				69BF972428BE40E500B35AEA /* Write */,
 				C35EB13828B3598A006AFA0A /* SceneDelegate.swift */,
 				C35EB13A28B3598A006AFA0A /* ViewController.swift */,
-				69F5444528BB648B0067277D /* ContentViewController.swift */,
 				C35EB13628B3598A006AFA0A /* AppDelegate.swift */,
 				C35EB13C28B3598A006AFA0A /* Main.storyboard */,
 				C35EB13F28B3598A006AFA0A /* Assets.xcassets */,
@@ -244,7 +241,6 @@
 				690DDCAD28BB365B00C278E1 /* WriteViewController.swift in Sources */,
 				C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */,
 				69BF973228C380B400B35AEA /* UIStackView+.swift in Sources */,
-				69F5444628BB648B0067277D /* ContentViewController.swift in Sources */,
 				69BF972728BE434800B35AEA /* SleepTimeDatePickerView.swift in Sources */,
 				69BF973628C384C100B35AEA /* UIColor+.swift in Sources */,
 				69BF973928C7F0A200B35AEA /* UIButton+.swift in Sources */,
