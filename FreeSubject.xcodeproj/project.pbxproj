@@ -13,7 +13,6 @@
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
 		690DDCAD28BB365B00C278E1 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DDCAC28BB365B00C278E1 /* WriteViewController.swift */; };
 		69A5F51728BB534600D2B283 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 69A5F51628BB534600D2B283 /* Parchment */; };
-		69A5F51928BB566200D2B283 /* Calendar in Resources */ = {isa = PBXBuildFile; fileRef = 69A5F51828BB566200D2B283 /* Calendar */; };
 		69A5F51E28BB572700D2B283 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 69A5F51D28BB572700D2B283 /* FSCalendar */; };
 		69BF972728BE434800B35AEA /* SleepTimeDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF972628BE434800B35AEA /* SleepTimeDatePickerView.swift */; };
 		69BF972928BE722700B35AEA /* MedicineCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BF972828BE722600B35AEA /* MedicineCheckView.swift */; };
@@ -33,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		690DDCAC28BB365B00C278E1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
-		69A5F51828BB566200D2B283 /* Calendar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calendar; sourceTree = "<group>"; };
 		69BF972628BE434800B35AEA /* SleepTimeDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimeDatePickerView.swift; sourceTree = "<group>"; };
 		69BF972828BE722600B35AEA /* MedicineCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineCheckView.swift; sourceTree = "<group>"; };
 		69BF972A28BE79AC00B35AEA /* EmotionalCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionalCheckView.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				690DDCAC28BB365B00C278E1 /* WriteViewController.swift */,
-				69A5F51828BB566200D2B283 /* Calendar */,
 				69BF972528BE410000B35AEA /* View */,
 			);
 			path = Write;
@@ -207,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */,
-				69A5F51928BB566200D2B283 /* Calendar in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
