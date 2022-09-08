@@ -11,22 +11,34 @@
 		690DDC9A28B7D5C100C278E1 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9928B7D5C100C278E1 /* Then */; };
 		690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9C28B7D5FB00C278E1 /* Realm */; };
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
+		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
+		914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */; };
+		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
+		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
+		91BED6D528C86BAD00837AFF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */; };
+		91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6DA28C880ED00837AFF /* LineChartViewController.swift */; };
+		91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6E028C8901B00837AFF /* LineChartView.swift */; };
+		91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */; };
+		91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91D85F1928BA7993009AAFDA /* FSCalendar */; };
+		91F040D828C646FA0049CAA7 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F040D728C646FA0049CAA7 /* Day.swift */; };
 		C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13628B3598A006AFA0A /* AppDelegate.swift */; };
 		C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13828B3598A006AFA0A /* SceneDelegate.swift */; };
-		C35EB13B28B3598A006AFA0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EB13A28B3598A006AFA0A /* ViewController.swift */; };
-		C35EB13E28B3598A006AFA0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35EB13C28B3598A006AFA0A /* Main.storyboard */; };
 		C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35EB13F28B3598A006AFA0A /* Assets.xcassets */; };
-		C35EB14328B3598A006AFA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
+		914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryViewController.swift; sourceTree = "<group>"; };
+		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		91BED6DA28C880ED00837AFF /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
+		91BED6E028C8901B00837AFF /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		91F040D728C646FA0049CAA7 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C35EB13328B3598A006AFA0A /* FreeSubject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSubject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35EB13628B3598A006AFA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35EB13828B3598A006AFA0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C35EB13A28B3598A006AFA0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C35EB13D28B3598A006AFA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C35EB13F28B3598A006AFA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C35EB14228B3598A006AFA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35EB14428B3598A006AFA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,8 +48,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */,
+				91B45FCB28C098B200BFF72D /* Charts in Frameworks */,
 				690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */,
 				690DDC9728B7C8EC00C278E1 /* SnapKit in Frameworks */,
+				91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */,
 				690DDC9A28B7D5C100C278E1 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,11 +80,16 @@
 			children = (
 				C35EB13628B3598A006AFA0A /* AppDelegate.swift */,
 				C35EB13828B3598A006AFA0A /* SceneDelegate.swift */,
-				C35EB13A28B3598A006AFA0A /* ViewController.swift */,
-				C35EB13C28B3598A006AFA0A /* Main.storyboard */,
 				C35EB13F28B3598A006AFA0A /* Assets.xcassets */,
-				C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */,
 				C35EB14428B3598A006AFA0A /* Info.plist */,
+				91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */,
+				9191481928BB52710006BFC7 /* CustomTabBarController.swift */,
+				911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */,
+				914E2F5E28C4D2A9009242A1 /* TemporaryViewController.swift */,
+				91F040D728C646FA0049CAA7 /* Day.swift */,
+				91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */,
+				91BED6DA28C880ED00837AFF /* LineChartViewController.swift */,
+				91BED6E028C8901B00837AFF /* LineChartView.swift */,
 			);
 			path = FreeSubject;
 			sourceTree = "<group>";
@@ -96,6 +115,8 @@
 				690DDC9928B7D5C100C278E1 /* Then */,
 				690DDC9C28B7D5FB00C278E1 /* Realm */,
 				690DDC9E28B7D5FB00C278E1 /* RealmSwift */,
+				91D85F1928BA7993009AAFDA /* FSCalendar */,
+				91B45FCA28C098B200BFF72D /* Charts */,
 			);
 			productName = FreeSubject;
 			productReference = C35EB13328B3598A006AFA0A /* FreeSubject.app */;
@@ -129,6 +150,8 @@
 				690DDC9528B7C8EC00C278E1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				690DDC9828B7D5C100C278E1 /* XCRemoteSwiftPackageReference "Then" */,
 				690DDC9B28B7D5FB00C278E1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				91D85F1828BA7993009AAFDA /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = C35EB13428B3598A006AFA0A /* Products */;
 			projectDirPath = "";
@@ -144,9 +167,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35EB14328B3598A006AFA0A /* LaunchScreen.storyboard in Resources */,
+				91BED6D528C86BAD00837AFF /* Launch Screen.storyboard in Resources */,
 				C35EB14028B3598A006AFA0A /* Assets.xcassets in Resources */,
-				C35EB13E28B3598A006AFA0A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,32 +179,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35EB13B28B3598A006AFA0A /* ViewController.swift in Sources */,
+				91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */,
+				91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */,
+				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
+				914E2F5F28C4D2A9009242A1 /* TemporaryViewController.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
+				91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */,
+				91F040D828C646FA0049CAA7 /* Day.swift in Sources */,
+				911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */,
 				C35EB13928B3598A006AFA0A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C35EB13C28B3598A006AFA0A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35EB13D28B3598A006AFA0A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C35EB14128B3598A006AFA0A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C35EB14228B3598A006AFA0A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C35EB14528B3598A006AFA0A /* Debug */ = {
@@ -219,6 +228,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -280,6 +290,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -309,8 +320,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -337,8 +349,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -403,6 +416,22 @@
 				kind = branch;
 			};
 		};
+		91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		91D85F1828BA7993009AAFDA /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -425,6 +454,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 690DDC9B28B7D5FB00C278E1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		91B45FCA28C098B200BFF72D /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 91B45FC928C098B200BFF72D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		91D85F1928BA7993009AAFDA /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 91D85F1828BA7993009AAFDA /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
