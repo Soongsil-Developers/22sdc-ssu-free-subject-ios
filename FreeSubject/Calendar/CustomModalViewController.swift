@@ -288,7 +288,7 @@ class CustomModalViewController: UIViewController {
     }
     
     @objc func nextView(_ sender : Any){
-        let view = TemporaryViewController()    // 여기에 규철님 VC을 연결한다. TemporaryViewController 대신해서
+        let view = WriteViewController()
         view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         self.present(view, animated: true, completion: nil)
