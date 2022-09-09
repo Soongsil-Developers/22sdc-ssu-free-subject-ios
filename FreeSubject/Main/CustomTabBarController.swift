@@ -16,7 +16,6 @@ class CustomTabBarController: UITabBarController{
     
         // create instance
         let calendarVC = CalendarViewController()
-//        let statsVC = StatsViewController()
         let statsVC = LineChartViewController()
         // set title
         calendarVC.title = "달력"
