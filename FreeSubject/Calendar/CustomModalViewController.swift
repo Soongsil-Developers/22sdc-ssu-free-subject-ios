@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol sendBackDelegate{
+    func dataReceived(data : String)
+}
+
+
+
 class CustomModalViewController: UIViewController {
-    
+
     // 모달창에 뜨는 부분 날짜 표기
     var Date:String = ""
     
@@ -69,7 +75,7 @@ class CustomModalViewController: UIViewController {
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)
-        btn.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
         return btn
     }()
     
@@ -103,11 +109,25 @@ class CustomModalViewController: UIViewController {
         animateDismissView()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animateShowDimmedView()
         animatePresentContainer()
     }
+    
+    
+    @objc func dismissModal(_ sender: UIButton) {
+        guard let pvc = self.presentingViewController else { return }
+
+        pvc.modalPresentationStyle = .fullScreen
+        self.dismiss(animated: true) {
+          pvc.present(WriteViewController(), animated: true, completion: nil)
+
+        }
+
+    }
+
     
     func setupView() {
         view.backgroundColor = .clear
@@ -285,13 +305,6 @@ class CustomModalViewController: UIViewController {
             // call this to trigger refresh constraint
             self.view.layoutIfNeeded()
         }
-    }
-    
-    @objc func nextView(_ sender : Any){
-        let view = WriteViewController()
-        view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        view.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(view, animated: true, completion: nil)
     }
 }
 
