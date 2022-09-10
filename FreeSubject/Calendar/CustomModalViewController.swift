@@ -8,12 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol sendBackDelegate{
-    func dataReceived(data : String)
-}
-
-
-
 class CustomModalViewController: UIViewController {
 
     // 모달창에 뜨는 부분 날짜 표기
@@ -168,7 +162,6 @@ class CustomModalViewController: UIViewController {
         }
         iconView2.snp.makeConstraints{ make in
             make.top.equalTo(titleLabel).inset(45)
-//            make.leading.equalTo(containerView).inset(135)
             make.centerX.equalTo(titleLabel)
             make.height.equalTo(90)
             make.width.equalTo(90)
