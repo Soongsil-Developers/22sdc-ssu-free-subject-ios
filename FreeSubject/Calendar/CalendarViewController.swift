@@ -48,14 +48,16 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // Do any additional setup after loading the view.
         setView()
         print("CalendarViewController")
-        
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
+        print("a")
         setView()
     }
     
     func setView(){
+        print("b")
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         view.addSubview(titleLable)
         view.addSubview(fsCalendar)
@@ -160,6 +162,5 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
           }
         }
     }
-    
 
 }
