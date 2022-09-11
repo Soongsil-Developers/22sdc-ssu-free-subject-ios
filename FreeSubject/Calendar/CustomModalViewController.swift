@@ -52,17 +52,10 @@ class CustomModalViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
+        view.alpha = 1.0
         return view
     }()
-    
-    let maxDimmedAlpha: CGFloat = 0.6
-    lazy var dimmedView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.alpha = maxDimmedAlpha
-        return view
-    }()
-    
+
     lazy var ButtonForNextView: UIButton = {
         var btn = UIButton()
         btn.setTitle("확인하기", for: .normal)
@@ -94,7 +87,7 @@ class CustomModalViewController: UIViewController {
         setupConstraints()
         // tap gesture on dimmed view to dismiss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
-        dimmedView.addGestureRecognizer(tapGesture)
+        containerView.addGestureRecognizer(tapGesture)
         
         setupPanGesture()
     }
@@ -113,11 +106,9 @@ class CustomModalViewController: UIViewController {
     
     @objc func dismissModal(_ sender: UIButton) {
         guard let pvc = self.presentingViewController else { return }
-
         pvc.modalPresentationStyle = .fullScreen
         self.dismiss(animated: true) {
           pvc.present(WriteViewController(), animated: true, completion: nil)
-
         }
 
     }
@@ -129,7 +120,6 @@ class CustomModalViewController: UIViewController {
     
     func setupConstraints() {
         // Add subviews
-        view.addSubview(dimmedView)
         view.addSubview(containerView)
         containerView.addSubview(iconView1)
         containerView.addSubview(iconView2)
@@ -171,13 +161,6 @@ class CustomModalViewController: UIViewController {
             make.trailing.equalTo(containerView).inset(33)
             make.height.equalTo(90)
             make.width.equalTo(90)
-        }
-        
-        dimmedView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview()
         }
         containerView.snp.makeConstraints{ make in
             make.leading.equalToSuperview()
@@ -277,17 +260,17 @@ class CustomModalViewController: UIViewController {
     }
     
     func animateShowDimmedView() {
-        dimmedView.alpha = 0
+        containerView.alpha = 1.0
         UIView.animate(withDuration: 0.4) {
-            self.dimmedView.alpha = self.maxDimmedAlpha
+            self.containerView.alpha = 1.0
         }
+        
     }
     
     func animateDismissView() {
-        // hide blur view
-        dimmedView.alpha = maxDimmedAlpha
+        containerView.alpha = 1.0
         UIView.animate(withDuration: 0.4) {
-            self.dimmedView.alpha = 0
+            self.containerView.alpha = 1.0
         } completion: { _ in
             // once done, dismiss without animation
             self.dismiss(animated: false)
