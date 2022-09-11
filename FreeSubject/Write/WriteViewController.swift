@@ -51,7 +51,8 @@ class WriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.view.backgroundColor = .white
+        NotificationCenter.default.addObserver(self, selector: #selector(saveButtonEnableCheck(_:)), name: Notification.Name("saveButtonEnable"), object: nil)
         setUI()
     }
     
@@ -61,7 +62,7 @@ class WriteViewController: UIViewController {
         
         contentScrollView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(200)
             $0.bottom.equalToSuperview()
         }
         
