@@ -13,18 +13,18 @@ class CustomModalViewController: UIViewController {
     // 모달창에 뜨는 부분 날짜 표기
     var Date:String = ""
     
+    
     // define lazy views
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-
         label.textAlignment = .center
         label.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         label.clipsToBounds = true
         label.layer.cornerRadius = 16
         // 나중에 선택한 날로 변결
-        label.text = Date
-        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.text = "\(Date)의 하루"
+        label.font = UIFont(name: "Avenir-Black", size: 15)
         return label
     }()
     lazy var iconView1: UIView = {
@@ -59,6 +59,7 @@ class CustomModalViewController: UIViewController {
     lazy var ButtonForNextView: UIButton = {
         var btn = UIButton()
         btn.setTitle("확인하기", for: .normal)
+        btn.titleLabel?.font =  UIFont(name: "Avenir-Black", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)

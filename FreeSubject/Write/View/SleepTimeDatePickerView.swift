@@ -23,7 +23,7 @@ class SleepTimeDatePickerView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.text = "어제 수면 시간"
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
     let attributes = [
@@ -32,7 +32,7 @@ class SleepTimeDatePickerView: UIView {
     ]
     
     private lazy var dateTextFiled = UITextField().then {
-        $0.font = UIFont.systemFont(ofSize: 24)
+        $0.font = UIFont(name: "Avenir-Black", size: 22)
         $0.attributedPlaceholder = NSAttributedString(string: "Sleep Time", attributes:attributes)
         $0.layer.backgroundColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1).cgColor
         $0.layer.cornerRadius = 15

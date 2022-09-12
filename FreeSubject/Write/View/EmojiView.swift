@@ -43,7 +43,7 @@ class EmojiView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.text = "기분을 선택해줘"
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
     private let horizontalStackView = UIStackView().then {

@@ -16,7 +16,7 @@ class EmojiStackView: UIView {
      var emojiButton = UIButton()
     
      var emojiLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = UIFont(name: "Avenir-Black", size: 12)
         $0.textAlignment = .center
         $0.sizeToFit()
     }

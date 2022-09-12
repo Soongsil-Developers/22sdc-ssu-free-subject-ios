@@ -21,19 +21,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var selectedDate: Date = Date()
     let dateFormatter = DateFormatter()
-    
 
-    let titleLable:UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .center
-        label.backgroundColor = UIColor(red: 0.74, green: 0.86, blue: 0.79, alpha: 1.00)
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 10
-        label.text = "app name"
-        label.font = .systemFont(ofSize: 20, weight: .regular)
-        return label
-    }()
     lazy var goToThisMonth:UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(systemName: "arrow.uturn.left"), for: .normal)
@@ -57,7 +45,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     func setView(){
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
-        view.addSubview(titleLable)
         view.addSubview(fsCalendar)
 
         view.addSubview(goToThisMonth)
@@ -73,10 +60,11 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     func setSNP(){
         calendarSetting()
         fsCalendar.snp.makeConstraints{ make in
-            make.top.equalTo(titleLable.fs_bottom).inset(150)
-            make.leading.equalTo(titleLable.fs_left).inset(20)
-            make.trailing.equalTo(titleLable.fs_right).inset(20)
+            make.top.equalToSuperview().offset(140)
             make.bottom.equalToSuperview().offset(-200)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        
         }
         goToThisMonth.snp.makeConstraints{ make in
             make.top.equalTo(fsCalendar).inset(10)
@@ -85,12 +73,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             make.height.equalTo(34)
         }
 
-        titleLable.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(60)
-            make.leading.equalToSuperview().offset(77)
-            make.trailing.equalToSuperview().offset(-77)
-            make.height.equalTo(60)
-        }
     }
     
     func calendarSetting(){
@@ -104,13 +86,15 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.eventDefaultColor = UIColor.green
         fsCalendar.appearance.eventSelectionColor = UIColor.green
         fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
-
+        fsCalendar.appearance.todayColor = UIColor(red: 0.47, green: 0.86, blue: 0.63, alpha: 1.0)
+        // font
+        fsCalendar.appearance.headerTitleFont = UIFont(name: "Avenir-Black", size: 22)
     }
     
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("select")
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
         print(dateFormatter.string(from: date))
         presentModalController(inputDate: dateFormatter.string(from: date))
         
