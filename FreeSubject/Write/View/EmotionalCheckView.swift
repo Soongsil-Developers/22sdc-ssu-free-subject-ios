@@ -15,7 +15,7 @@ protocol EmotionalCheckDelegate: AnyObject {
 
 class EmotionalCheckView: UIView {
     
-    var emotionalCheck : Bool?
+    var emotionalCheck : Bool = false
     
     weak var delegate: EmotionalCheckDelegate?
     
@@ -45,8 +45,9 @@ class EmotionalCheckView: UIView {
     }
     
     @objc func onClickSwitch(sender: UISwitch) {
-            emotionalCheck = sender.isOn
+        //emotionalCheck = sender.isOn
         self.delegate?.emotionalCheck(emotional: sender.isOn)
+        print(sender.isOn)
     }
    
     
