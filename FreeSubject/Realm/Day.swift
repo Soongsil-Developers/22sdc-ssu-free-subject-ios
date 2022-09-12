@@ -10,24 +10,30 @@ import Foundation
 import UIKit
 
 class Day: Object{
-    @Persisted var Date: String = ""
-    @Persisted var iconFeeling: String = ""
-    @Persisted var sleepTime: String = ""
-    @Persisted var didFeelingChange: Bool = true
-    @Persisted var didTakeMedicine: Bool = true
-    @Persisted var tableNum: Int = 0 // 질문지에서 마지막 표에 대한 데이터
+    @Persisted var createdDate: Date
+    @Persisted var iconFeeling: String
+    @Persisted var sleepTime: String
+    @Persisted var didFeelingChange: Bool
+    @Persisted var didTakeMedicine: Bool
+    @Persisted var firstQuestion: String
+    @Persisted var secondQuestion: String
+    @Persisted var thirdQuestion: String // 질문지에서 마지막 표에 대한 데이터
+    
+    @Persisted(primaryKey: true) var _id: ObjectId // primaryKey
     
     override static func primaryKey() -> String? {
       return "Date"
     }
 
-    convenience init(Date:String,iconFeeling:String,sleepTime:String,didFeelingChange:Bool,didTakeMedicine:Bool,tableNum:Int) {
+    convenience init(createdDate:Date,iconFeeling:String, sleepTime:String,didFeelingChange:Bool,didTakeMedicine:Bool,firstQuestion:String, secondQuestion:String, thirdQuestion:String) {
         self.init()
-        self.Date = Date
+        self.createdDate = createdDate
         self.iconFeeling = iconFeeling
         self.sleepTime = sleepTime
         self.didFeelingChange = didFeelingChange
         self.didTakeMedicine = didTakeMedicine
-        self.tableNum = tableNum
+        self.firstQuestion = firstQuestion
+        self.secondQuestion = secondQuestion
+        self.thirdQuestion = thirdQuestion
     }
 }

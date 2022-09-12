@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+protocol EmojiViewCheckDelegate: AnyObject {
+
+    func getEmoji(emoji: String)
+}
+
 enum Emoji: Int, CaseIterable {
     case happy
     case tranquility
@@ -52,11 +57,13 @@ class EmojiView: UIView {
             let newView = view.first(where: {$0.emoji == self.emoji})
             newView?.addBorder()
             
+            self.delegate?.getEmoji(emoji: emoji!.labelText)
+            
             
         }
     }
         
-    var emojiTag: Int = 0
+    weak var delegate: EmojiViewCheckDelegate?
     
     private let titleLabel = UILabel().then {
         $0.text = "기분을 선택해줘"

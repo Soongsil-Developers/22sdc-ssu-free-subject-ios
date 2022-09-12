@@ -10,6 +10,11 @@ import SnapKit
 import Then
 
 protocol TodayQuestionCheckDelegate: AnyObject {
+    
+    func firstQuestionText(firstQuestion: String)
+    
+    func secondQuestionText(secondQuestion: String)
+    
     func TodayQuestionCheckEnabledSaveBtn(question: String)
 }
 
@@ -107,6 +112,11 @@ class TodayQuestionView: UIView {
         thirdQuestionTextField.inputView = questionPicker
     }
     
+    func configTextView() {
+        firstQuestionTextView.delegate = self
+        secondQuestionTextView.delegate = self
+    }
+    
     func configToolbar() {
         
         let toolBar = UIToolbar()
@@ -137,6 +147,7 @@ class TodayQuestionView: UIView {
         setConstraints()
         configPickerView()
         configToolbar()
+        configTextView()
     }
     
     required init?(coder: NSCoder) {
@@ -189,5 +200,19 @@ extension TodayQuestionView: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.thirdQuestionTextField.text = self.question[row]
+    }
+}
+
+extension TodayQuestionView: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        firstQuestionTextView.resignFirstResponder()
+        secondQuestionTextView.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.delegate?.firstQuestionText(firstQuestion: firstQuestionTextView.text)
+        self.delegate?.secondQuestionText(secondQuestion: secondQuestionTextView.text)
     }
 }

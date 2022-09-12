@@ -9,24 +9,34 @@ import UIKit
 import SnapKit
 import Then
 import RealmSwift
+import Realm
 
 class WriteViewController: UIViewController {
     
     var todayTask: Day?
     
+    var stdDate: String?
+    
     let calendar: Calendar = Calendar.current
     
     // 입력값 필수 체크
+    var isEmojiCheckRight: Bool = false
     var isMedicineCheckRight: Bool = false
     var isSleepTimeCheckRight: Bool = false
     var isTodayQuestionCheckRight: Bool = false
     
+    //이모지
+    var getEmoji: String?
     // 약복용 여부
     var medicineCheck: Bool?
     // 수면 시간
     var sleepTime: String?
     // 기분 체크
     var emotionCheck: Bool?
+    // 1번째 질문
+    var firstQuestion: String?
+    // 2번째 질문
+    var secondQuestion: String?
     // 3번째 질문
     var questionText: String?
     
@@ -49,11 +59,15 @@ class WriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        contentScrollView.emojiView.delegate = self
         contentScrollView.medicineCheckView.delegate = self
         contentScrollView.sleepTimeDatePickerView.delegate = self
+        contentScrollView.emotionalCheckView.delegate = self
         contentScrollView.todayQuestionView.delegate = self
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,11 +97,12 @@ class WriteViewController: UIViewController {
     func saveData() {
         let currentDate = Date()
         let newTask = Day(createdDate: currentDate,
+                          iconFeeling: getEmoji!,
                           sleepTime: sleepTime!,
-                          didFeelingChange: emotionalCheckView.emotionalCheckSwitch.isOn,
+                          didFeelingChange: emotionCheck ?? false,
                           didTakeMedicine: medicineCheck!,
-                          firstQuestion: todayQuestionView.firstQuestionTextView.text,
-                          secondQuestion: todayQuestionView.secondQuestionTextView.text,
+                          firstQuestion: firstQuestion ?? "불편한 거 없이 좋았어요.",
+                          secondQuestion: secondQuestion ?? "특별한 사건이 없었어요.",
                           thirdQuestion: questionText!)
         
         if calendar.isDateInToday(currentDate) {
@@ -102,19 +117,38 @@ class WriteViewController: UIViewController {
         }
     }
     
+    @objc func keyboardWillShow(_ sender: Notification) {
+        self.view.frame.origin.y = -250 // Move view 150 points upward
+
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        self.view.frame.origin.y = 0
+        // Move view to original position
+    }
+    
+    
     
     @objc func saveButtonEnableCheck(_ noti: Notification) {
-        saveButton.isEnabled = isMedicineCheckRight && isSleepTimeCheckRight && isTodayQuestionCheckRight
+        saveButton.isEnabled = isMedicineCheckRight && isSleepTimeCheckRight && isTodayQuestionCheckRight && isEmojiCheckRight
     }
     
     @objc func saveButtonTap(_ sender: UIButton) {
         print(sender.isEnabled)
         saveData()
-        print(todayTask)
         self.dismiss(animated: true)
     }
 }
-extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate, EmotionalCheckDelegate {
+extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate, EmotionalCheckDelegate, EmojiViewCheckDelegate {
+
+    func getEmoji(emoji: String) {
+        self.getEmoji = emoji
+        
+        if self.getEmoji != "" {
+            self.isEmojiCheckRight = true
+        }
+        
+    }
     
     func SleepTimeCheckEnabledSaveBtn(sleepTime: String) {
         self.sleepTime = sleepTime
@@ -157,10 +191,16 @@ extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, To
         }
     }
     
+    func firstQuestionText(firstQuestion: String) {
+        self.firstQuestion = firstQuestion
+    }
+    
+    func secondQuestionText(secondQuestion: String) {
+        self.secondQuestion = secondQuestion
+    }
+    
     func emotionalCheck(emotional:Bool) {
         self.emotionCheck = emotional
     }
-    
-    
 }
 

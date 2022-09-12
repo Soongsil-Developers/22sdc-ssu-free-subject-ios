@@ -12,6 +12,7 @@
 		690DDC9D28B7D5FB00C278E1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9C28B7D5FB00C278E1 /* Realm */; };
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
 		695C882728CF147D00AE977F /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C882628CF147D00AE977F /* RealmService.swift */; };
+		695C882928CF93B400AE977F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C882828CF93B300AE977F /* Date+.swift */; };
 		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
 		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
 		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		695C882628CF147D00AE977F /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		695C882828CF93B300AE977F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
 		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				C3CAE15628CA250A00BD504D /* UIStackView+.swift */,
 				C3CAE15728CA250A00BD504D /* UIButton+.swift */,
 				C3CAE15828CA250A00BD504D /* UIColor+.swift */,
+				695C882828CF93B300AE977F /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
 				91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */,
 				C3CAE15C28CA250A00BD504D /* MedicineCheckView.swift in Sources */,
+				695C882928CF93B400AE977F /* Date+.swift in Sources */,
 				C3CAE16028CA250A00BD504D /* EmojiStackView.swift in Sources */,
 				91F040D828C646FA0049CAA7 /* Day.swift in Sources */,
 				911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */,
