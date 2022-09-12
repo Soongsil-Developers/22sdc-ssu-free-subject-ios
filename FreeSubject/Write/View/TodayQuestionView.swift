@@ -33,7 +33,7 @@ class TodayQuestionView: UIView {
         $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
-   private let firstQuestionTextView = UITextView().then {
+    let firstQuestionTextView = UITextView().then {
         $0.font = UIFont(name: "Avenir-Black", size: 12)
         $0.layer.cornerRadius = 5
         $0.clipsToBounds = true
