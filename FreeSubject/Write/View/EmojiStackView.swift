@@ -19,13 +19,18 @@ class EmojiStackView: UIButton {
     
     weak var delegate: EmojiStackViewDelegate?
     
-    override var isSelected: Bool {
+    override var isHighlighted: Bool {
         didSet {
+            if oldValue {
             emojiTap()
+            }
         }
     }
     
-    private var emojiImageView = UIButton()
+    private var emojiImageView = UIImageView().then{
+        $0.layer.cornerRadius = 18
+        $0.clipsToBounds = true
+    }
     
     private var emojiLabel = UILabel().then {
         $0.font = UIFont(name: "Avenir-Black", size: 12)
@@ -33,28 +38,18 @@ class EmojiStackView: UIButton {
         $0.sizeToFit()
     }
     
-    private let stackView = UIStackView().then {
-        $0.layer.cornerRadius = 24.5
-        $0.layer.masksToBounds = true
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.spacing = 5
-        $0.distribution = .fill
-        $0.isUserInteractionEnabled = true
-        
-    }
     
     func addBorder() {
-        stackView.layer.borderWidth = 3
-        stackView.layer.borderColor = UIColor.black.cgColor
+        emojiImageView.layer.borderWidth = 2
+        emojiImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     func removeBorder() {
-        stackView.layer.borderWidth = 0
+        emojiImageView.layer.borderWidth = 0
     }
     
     override init(frame: CGRect) {
-        super.init(frame: .zero) //오토레이아웃으로 잡는다는 이야기
+        super.init(frame: frame) //오토레이아웃으로 잡는다는 이야기
         setViewHierarchy()
         setConstraints()
     }
@@ -64,33 +59,34 @@ class EmojiStackView: UIButton {
     }
     
     private func setViewHierarchy() {
-        addSubview(stackView)
-        stackView.addArrangedSubview(emojiImageView)
-        stackView.addArrangedSubview(emojiLabel)
+        addSubviews(emojiImageView, emojiLabel)
     }
     
     private func setConstraints() {
-        stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+    
+            emojiLabel.snp.makeConstraints { make in
+                make.bottom.equalToSuperview()
+                make.leading.trailing.equalToSuperview()
+            }
+            
+            emojiImageView.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalTo(emojiLabel.snp.top).offset(-8)
+            }
         }
-    }
     
     func configure(emoji:Emoji) {
         self.emoji = emoji
         emojiLabel.text = emoji.labelText
-        emojiImageView.setImage(emoji.image, for: .normal)
-        //emojiImageView.image = emoji.image
+        emojiImageView.image = emoji.image
     }
     
     //선택메서드 -> 델리게이트 불러서 파라미터에 self.icon을 넣는다.
     
     func emojiTap() {
         
-        
-        
-        guard let emoji = emoji else {
-            return
-        }
+        guard let emoji = emoji else { return }
         
         self.delegate?.didSelectedEmojiView(newEmoji:emoji)
     }

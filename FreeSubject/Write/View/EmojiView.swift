@@ -43,6 +43,7 @@ class EmojiView: UIView {
    
     var emoji: Emoji? {
         didSet {
+            //1. uiView 배열을 emojiStackview 배열로 변환
             let view = horizontalStackView.arrangedSubviews.compactMap {$0 as? EmojiStackView }
             
             let oldView = view.first(where: {$0.emoji == oldValue})
@@ -124,10 +125,7 @@ class EmojiView: UIView {
 extension EmojiView: EmojiStackViewDelegate {
     
     func didSelectedEmojiView(newEmoji: Emoji) {
-       //1. uiView 배열을 emojiStackview 배열로 변환
         
         self.emoji = newEmoji
-        
-
     }
 }
