@@ -93,12 +93,12 @@ class SleepTimeDatePickerView: UIView {
     private func setConstraints() {
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(7)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(8.84)
         }
         
         dateTextFiled.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(2.26)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(7)
             $0.bottom.equalToSuperview().inset(12)
             $0.leading.trailing.equalToSuperview().inset(34)
         }

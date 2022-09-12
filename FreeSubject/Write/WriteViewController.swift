@@ -8,8 +8,13 @@
 import UIKit
 import SnapKit
 import Then
+import RealmSwift
 
 class WriteViewController: UIViewController {
+    
+    var todayTask: Day?
+    
+    let calendar: Calendar = Calendar.current
     
     // 입력값 필수 체크
     var isMedicineCheckRight: Bool = false
@@ -20,6 +25,8 @@ class WriteViewController: UIViewController {
     var medicineCheck: Bool?
     // 수면 시간
     var sleepTime: String?
+    // 기분 체크
+    var emotionCheck: Bool?
     // 3번째 질문
     var questionText: String?
     
@@ -73,6 +80,28 @@ class WriteViewController: UIViewController {
         }
     }
     
+    func saveData() {
+        let currentDate = Date()
+        let newTask = Day(createdDate: currentDate,
+                          sleepTime: sleepTime!,
+                          didFeelingChange: emotionalCheckView.emotionalCheckSwitch.isOn,
+                          didTakeMedicine: medicineCheck!,
+                          firstQuestion: todayQuestionView.firstQuestionTextView.text,
+                          secondQuestion: todayQuestionView.secondQuestionTextView.text,
+                          thirdQuestion: questionText!)
+        
+        if calendar.isDateInToday(currentDate) {
+            if self.todayTask?._id == nil {
+                RealmService.shared.add(item: newTask)
+                
+            } else {
+                guard let task = self.todayTask else { return }
+                
+                RealmService.shared.update(item: task, newTask: newTask)
+            }
+        }
+    }
+    
     
     @objc func saveButtonEnableCheck(_ noti: Notification) {
         saveButton.isEnabled = isMedicineCheckRight && isSleepTimeCheckRight && isTodayQuestionCheckRight
@@ -80,9 +109,12 @@ class WriteViewController: UIViewController {
     
     @objc func saveButtonTap(_ sender: UIButton) {
         print(sender.isEnabled)
+        saveData()
+        print(todayTask)
+        self.dismiss(animated: true)
     }
 }
-extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate {
+extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate, EmotionalCheckDelegate {
     
     func SleepTimeCheckEnabledSaveBtn(sleepTime: String) {
         self.sleepTime = sleepTime
@@ -124,5 +156,11 @@ extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, To
             )
         }
     }
+    
+    func emotionalCheck(emotional:Bool) {
+        self.emotionCheck = emotional
+    }
+    
+    
 }
 

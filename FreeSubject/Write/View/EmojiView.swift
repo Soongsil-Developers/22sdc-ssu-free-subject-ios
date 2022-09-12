@@ -40,6 +40,22 @@ enum Emoji: Int, CaseIterable {
     }
 }
 class EmojiView: UIView {
+   
+    var emoji: Emoji? {
+        didSet {
+            let view = horizontalStackView.arrangedSubviews.compactMap {$0 as? EmojiStackView }
+            
+            let oldView = view.first(where: {$0.emoji == oldValue})
+            oldView?.removeBorder()
+            
+            let newView = view.first(where: {$0.emoji == self.emoji})
+            newView?.addBorder()
+            
+            
+        }
+    }
+        
+    var emojiTag: Int = 0
     
     private let titleLabel = UILabel().then {
         $0.text = "기분을 선택해줘"
@@ -71,12 +87,17 @@ class EmojiView: UIView {
         for emoji in Emoji.allCases {
             let emojiStackView = EmojiStackView()
             emojiStackView.configure(emoji: emoji)
-//            emojiStackView.emojiLabel.text = i.labelText
-//            emojiStackView.emojiButton.setImage(i.image, for: .normal)
+            emojiStackView.isUserInteractionEnabled = true
+            //emojiStackView.addTarget(self, action: S, for: .touchUpInside)
+            emojiStackView.delegate = self
+            emojiStackView.tag = emoji.rawValue
             horizontalStackView.addArrangedSubview(emojiStackView)
         }
-        
     }
+    
+//    @objc func didSeletedEmojiStackView() {
+//        emojiTap()
+//    }
     
     private func setViewHierarchy() {
         addSubview(horizontalStackView)
@@ -96,5 +117,17 @@ class EmojiView: UIView {
             $0.leading.equalToSuperview().inset(14)
         }
         
+    }
+}
+
+
+extension EmojiView: EmojiStackViewDelegate {
+    
+    func didSelectedEmojiView(newEmoji: Emoji) {
+       //1. uiView 배열을 emojiStackview 배열로 변환
+        
+        self.emoji = newEmoji
+        
+
     }
 }

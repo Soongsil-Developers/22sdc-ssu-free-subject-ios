@@ -10,12 +10,12 @@ import SnapKit
 import Then
 
 protocol EmotionalCheckDelegate: AnyObject {
-    func emotionalCheck()
+    func emotionalCheck(emotional:Bool)
 }
 
 class EmotionalCheckView: UIView {
     
-    var EmotionalCheck : Bool?
+    var emotionalCheck : Bool?
     
     weak var delegate: EmotionalCheckDelegate?
     
@@ -24,7 +24,7 @@ class EmotionalCheckView: UIView {
         $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
-    private let emotionalCheckSwitch = UISwitch().then {
+     let emotionalCheckSwitch = UISwitch().then {
         //$0.isOn = true
         $0.thumbTintColor = UIColor.white
         $0.onTintColor = UIColor.customColor(.UISwitchColor)
@@ -45,8 +45,8 @@ class EmotionalCheckView: UIView {
     }
     
     @objc func onClickSwitch(sender: UISwitch) {
-            EmotionalCheck = sender.isOn
-            self.delegate?.emotionalCheck()
+            emotionalCheck = sender.isOn
+        self.delegate?.emotionalCheck(emotional: sender.isOn)
     }
    
     
