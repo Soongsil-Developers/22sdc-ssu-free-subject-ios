@@ -21,7 +21,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var selectedDate: Date = Date()
     let dateFormatter = DateFormatter()
-    
+
     lazy var goToThisMonth:UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(systemName: "arrow.uturn.left"), for: .normal)
@@ -73,12 +73,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
             make.height.equalTo(34)
         }
 
-//        titleLable.snp.makeConstraints{ make in
-//            make.top.equalToSuperview().offset(60)
-//            make.leading.equalToSuperview().offset(77)
-//            make.trailing.equalToSuperview().offset(-77)
-//            make.height.equalTo(60)
-//        }
     }
     
     func calendarSetting(){
@@ -93,13 +87,14 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.eventSelectionColor = UIColor.green
         fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
         fsCalendar.appearance.todayColor = UIColor(red: 0.47, green: 0.86, blue: 0.63, alpha: 1.0)
-        
+        // font
+        fsCalendar.appearance.headerTitleFont = UIFont(name: "Avenir-Black", size: 22)
     }
     
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("select")
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
         print(dateFormatter.string(from: date))
         presentModalController(inputDate: dateFormatter.string(from: date))
         

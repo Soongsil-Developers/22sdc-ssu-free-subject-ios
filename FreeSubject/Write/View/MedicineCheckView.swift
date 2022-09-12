@@ -19,7 +19,7 @@ class MedicineCheckView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.text = "약 복용"
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
     lazy var takingMedicineButton = UIButton().then {

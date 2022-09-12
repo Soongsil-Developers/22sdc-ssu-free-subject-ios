@@ -25,16 +25,16 @@ class TodayQuestionView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.text = "오늘의 질문"
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
     private let firstQuestionLabel = UILabel().then {
         $0.text = "1. 약을 먹고 불편한 것이 있다면 자세히 알려줘"
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
    private let firstQuestionTextView = UITextView().then {
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = UIFont(name: "Avenir-Black", size: 12)
         $0.layer.cornerRadius = 5
         $0.clipsToBounds = true
         $0.translatesAutoresizingMaskIntoConstraints = true
@@ -50,11 +50,11 @@ class TodayQuestionView: UIView {
     
     private let secondQuestionLabel = UILabel().then {
         $0.text = "2. 특별한 생활 사건들에 대해 자세히 알려줘"
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont(name: "Avenir-Black", size: 13)
     }
     
     let secondQuestionTextView = UITextView().then {
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = UIFont(name: "Avenir-Black", size: 12)
         $0.layer.cornerRadius = 5
         $0.clipsToBounds = true
         $0.translatesAutoresizingMaskIntoConstraints = true
@@ -70,11 +70,11 @@ class TodayQuestionView: UIView {
     
     private let thirdQuestionLabel = UILabel().then {
         $0.text = "3. 오늘 하루를 떠올리고 아래 표에서 어울리는 나의 상태를 골라줘"
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont(name: "Avenir-Black", size: 13)
     }
     
     lazy var thirdQuestionTextField = UITextField().then {
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = UIFont(name: "Avenir-Black", size: 12)
         $0.tintColor = UIColor.gray
         $0.layer.backgroundColor = UIColor.white.cgColor
         $0.text = text

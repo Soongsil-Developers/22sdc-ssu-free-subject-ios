@@ -21,7 +21,7 @@ class EmotionalCheckView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.text = "하루 동안 유의미한 감정 기복이 있었어?"
-        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Avenir-Black", size: 14)
     }
     
     private let emotionalCheckSwitch = UISwitch().then {
