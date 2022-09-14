@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 
-class CustomModalViewController: UIViewController {
+class CustomModalViewController: UIViewController{
+
 
     // 모달창에 뜨는 부분 날짜 표기
     var Date:String = ""
-    
+    var isToday:Bool = false
     
     // define lazy views
     lazy var titleLabel: UILabel = {
@@ -57,6 +58,7 @@ class CustomModalViewController: UIViewController {
     }()
 
     lazy var ButtonForNextView: UIButton = {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load2"), object: self.Date)
         var btn = UIButton()
         btn.setTitle("확인하기", for: .normal)
         btn.titleLabel?.font =  UIFont(name: "Avenir-Black", size: 20)
@@ -64,6 +66,8 @@ class CustomModalViewController: UIViewController {
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)
         btn.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
+
+
         return btn
     }()
     
@@ -81,8 +85,9 @@ class CustomModalViewController: UIViewController {
     var containerViewBottomConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
-        print("CustomModalViewController")
         super.viewDidLoad()
+//        print(Date)
+        print(isToday)
         view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
         setupConstraints()
@@ -104,16 +109,18 @@ class CustomModalViewController: UIViewController {
         animatePresentContainer()
     }
     
-    
     @objc func dismissModal(_ sender: UIButton) {
+        
         guard let pvc = self.presentingViewController else { return }
         pvc.modalPresentationStyle = .fullScreen
         self.dismiss(animated: true) {
-          pvc.present(WriteViewController(), animated: true, completion: nil)
+//            pvc.present(WriteViewController(), animated: true, completion: nil)
+            pvc.present(WriteViewController(isToday: self.isToday),animated: true,completion: nil)
         }
-
+        
     }
-
+    
+    
     
     func setupView() {
         view.backgroundColor = .clear
@@ -195,11 +202,11 @@ class CustomModalViewController: UIViewController {
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
         // Drag to top will be minus value and vice versa
-        print("Pan gesture y offset: \(translation.y)")
+//        print("Pan gesture y offset: \(translation.y)")
         
         // Get drag direction
         let isDraggingDown = translation.y > 0
-        print("Dragging direction: \(isDraggingDown ? "going down" : "going up")")
+//        print("Dragging direction: \(isDraggingDown ? "going down" : "going up")")
         
         // New height is based on value of dragging plus current container height
         let newHeight = currentContainerHeight - translation.y

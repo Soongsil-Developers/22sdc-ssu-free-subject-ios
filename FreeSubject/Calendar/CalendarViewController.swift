@@ -17,11 +17,13 @@ import Charts
 
 class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance{
     
-    
+    // 실제 날짜
+    let realTime = Date()
+
     let fsCalendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     var selectedDate: Date = Date()
     let dateFormatter = DateFormatter()
-
+    
     lazy var goToThisMonth:UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(systemName: "arrow.uturn.left"), for: .normal)
@@ -35,7 +37,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
         setView()
-        print("CalendarViewController")
     }
 
     
@@ -46,13 +47,10 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     func setView(){
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         view.addSubview(fsCalendar)
-
         view.addSubview(goToThisMonth)
         fsCalendar.delegate = self
         fsCalendar.dataSource = self
-    
-        resetDB()
-//        createDateDB()
+//        resetDB()
         setSNP()
         
     }
@@ -93,17 +91,29 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("select")
+        let isThisToday: Bool = isToday(calendarDate: date, todayDate: self.realTime)
         dateFormatter.dateFormat = "YYYY년 MM월 dd일"
-        print(dateFormatter.string(from: date))
-        presentModalController(inputDate: dateFormatter.string(from: date))
+        presentModalController(inputDate: dateFormatter.string(from: date), isThisToday: isThisToday)
         
+    }
+    // 캘린더의 선택한 날과 실제 날짜를 비교해서 Bool 값 리턴
+    func isToday(calendarDate:Date,todayDate:Date)->Bool{
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        let a = dateFormatter.string(from: calendarDate)
+        let b = dateFormatter.string(from: todayDate)
+        if(a == b){
+            return true
+        }
+        else{
+            return false
+        }
     }
     
     // To be updated
-    func presentModalController(inputDate:String) {
+    func presentModalController(inputDate:String,isThisToday:Bool) {
         let vc = CustomModalViewController()
         vc.Date = inputDate
+        vc.isToday = isThisToday
         vc.modalPresentationStyle = .overCurrentContext
         // keep false
         // modal animation will be handled in VC itself
@@ -116,15 +126,6 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         self.fsCalendar.setCurrentPage(Date(), animated: true)
     }
     
-    // Realm 생성
-    func createDateDB(){
-        let realm = try! Realm()
-        let date1 = Day(Date: "2022-09-03", iconFeeling: "smile", sleepTime: "8:30", didFeelingChange: false, didTakeMedicine: true, tableNum: 2)
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        try! realm.write{
-            realm.add(date1)
-        }
-    }
     
     // 아예 Realm 파일 삭제 Realm 의 요소들을 변경하면 한번씩 해줘야 한다...
     func resetDB(){

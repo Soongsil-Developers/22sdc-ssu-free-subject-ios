@@ -11,13 +11,30 @@ import Then
 import RealmSwift
 import Realm
 
+
+
+
 class WriteViewController: UIViewController {
+
+
+    
+    let dateFormatter = DateFormatter()
+    var isToday:Bool  = false
+    let realTime = Date()
     
     var todayTask: Day?
     
     var stdDate: String?
     
     let calendar: Calendar = Calendar.current
+    
+    init(isToday: Bool) {
+            self.isToday = isToday
+            super.init(nibName: nil, bundle: nil)
+        }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // 입력값 필수 체크
     var isEmojiCheckRight: Bool = false
@@ -57,8 +74,12 @@ class WriteViewController: UIViewController {
         $0.addTarget(self, action: #selector(saveButtonTap(_:)), for: .touchUpInside)
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+//        resetDB()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(self.isToday)
         contentScrollView.emojiView.delegate = self
         contentScrollView.medicineCheckView.delegate = self
         contentScrollView.sleepTimeDatePickerView.delegate = self
@@ -68,8 +89,9 @@ class WriteViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+        
 
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.backgroundColor = .white
@@ -95,7 +117,8 @@ class WriteViewController: UIViewController {
     }
     
     func saveData() {
-        let currentDate = Date()
+        dateFormatter.dateFormat = "YYYYMMdd"
+        let currentDate = dateFormatter.string(from: realTime)
         let newTask = Day(createdDate: currentDate,
                           iconFeeling: getEmoji!,
                           sleepTime: sleepTime!,
@@ -105,17 +128,31 @@ class WriteViewController: UIViewController {
                           secondQuestion: secondQuestion ?? "특별한 사건이 없었어요.",
                           thirdQuestion: questionText!)
         
-        if calendar.isDateInToday(currentDate) {
+    
+        // 혹시 몰라 일단, 주석 처리했습니다.
+//        if calendar.isDateInToday(currentDate) {
+//            if self.todayTask?._id == nil {
+//                RealmService.shared.add(item: newTask)
+//
+//            } else {
+//                guard let task = self.todayTask else { return }
+//
+//                RealmService.shared.update(item: task, newTask: newTask)
+//            }
+//        }
+        
+        // 여기에 오늘이 아니면 데이터 들어가지 않는 로직 구현
+        if self.isToday == true{
             if self.todayTask?._id == nil {
                 RealmService.shared.add(item: newTask)
-                
-            } else {
-                guard let task = self.todayTask else { return }
-                
+            }else{
+                guard let task = self.todayTask else {return}
                 RealmService.shared.update(item: task, newTask: newTask)
             }
         }
+        
     }
+
     
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -250 // Move view 150 points upward
@@ -202,5 +239,25 @@ extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, To
     func emotionalCheck(emotional:Bool) {
         self.emotionCheck = emotional
     }
+    
+    // 아예 Realm 파일 삭제 Realm 의 요소들을 변경하면 한번씩 해줘야 한다...
+    func resetDB(){
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        let realmURLs = [
+          realmURL,
+          realmURL.appendingPathExtension("lock"),
+          realmURL.appendingPathExtension("note"),
+          realmURL.appendingPathExtension("management")
+        ]
+
+        for URL in realmURLs {
+          do {
+            try FileManager.default.removeItem(at: URL)
+          } catch {
+            // handle error
+          }
+        }
+    }
+    
 }
 

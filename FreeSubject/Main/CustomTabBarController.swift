@@ -10,9 +10,7 @@ import UIKit
 import SnapKit
 
 class CustomTabBarController: UITabBarController{
-    override func viewDidLoad() {
-        print("CustomTabBarController")
-        super.viewDidLoad()
+    override func viewDidLoad() {        super.viewDidLoad()
     
         // create instance
         let calendarVC = CalendarViewController()
