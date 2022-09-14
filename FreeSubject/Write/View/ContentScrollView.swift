@@ -76,7 +76,7 @@ class ContentScrollView: UIView {
         }
         
         contentGrayView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(10)
             $0.trailing.equalToSuperview().inset(10)
