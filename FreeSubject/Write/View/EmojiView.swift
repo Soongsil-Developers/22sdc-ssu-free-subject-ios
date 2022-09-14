@@ -11,7 +11,7 @@ import Then
 
 protocol EmojiViewCheckDelegate: AnyObject {
 
-    func getEmoji(emoji: String)
+    func getEmoji(emoji: Int)
 }
 
 enum Emoji: Int, CaseIterable {
@@ -57,8 +57,7 @@ class EmojiView: UIView {
             let newView = view.first(where: {$0.emoji == self.emoji})
             newView?.addBorder()
             
-            self.delegate?.getEmoji(emoji: emoji!.labelText)
-            
+            self.delegate?.getEmoji(emoji: emoji!.rawValue)
             
         }
     }

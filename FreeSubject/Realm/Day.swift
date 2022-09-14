@@ -11,7 +11,7 @@ import UIKit
 
 class Day: Object{
     @Persisted var createdDate: String
-    @Persisted var iconFeeling: String
+    @Persisted var iconFeeling: Int
     @Persisted var sleepTime: String
     @Persisted var didFeelingChange: Bool
     @Persisted var didTakeMedicine: Bool
@@ -25,7 +25,7 @@ class Day: Object{
       return "Date"
     }
 
-    convenience init(createdDate:String,iconFeeling:String, sleepTime:String,didFeelingChange:Bool,didTakeMedicine:Bool,firstQuestion:String, secondQuestion:String, thirdQuestion:String) {
+    convenience init(createdDate:String,iconFeeling:Int, sleepTime:String,didFeelingChange:Bool,didTakeMedicine:Bool,firstQuestion:String, secondQuestion:String, thirdQuestion:String) {
         self.init()
         self.createdDate = createdDate
         self.iconFeeling = iconFeeling

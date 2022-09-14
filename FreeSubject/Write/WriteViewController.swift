@@ -43,7 +43,7 @@ class WriteViewController: UIViewController {
     var isTodayQuestionCheckRight: Bool = false
     
     //이모지
-    var getEmoji: String?
+    var getEmoji: Int?
     // 약복용 여부
     var medicineCheck: Bool?
     // 수면 시간
@@ -149,7 +149,9 @@ class WriteViewController: UIViewController {
                 guard let task = self.todayTask else {return}
                 RealmService.shared.update(item: task, newTask: newTask)
             }
-        }
+        } else {
+            
+        }//확인만
         
     }
 
@@ -177,15 +179,14 @@ class WriteViewController: UIViewController {
     }
 }
 extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate, EmotionalCheckDelegate, EmojiViewCheckDelegate {
-
-    func getEmoji(emoji: String) {
+    func getEmoji(emoji: Int) {
         self.getEmoji = emoji
         
-        if self.getEmoji != "" {
+        if self.getEmoji != nil {
             self.isEmojiCheckRight = true
         }
-        
     }
+    
     
     func SleepTimeCheckEnabledSaveBtn(sleepTime: String) {
         self.sleepTime = sleepTime
