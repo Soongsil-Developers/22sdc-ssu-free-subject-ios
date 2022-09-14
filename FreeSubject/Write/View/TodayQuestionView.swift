@@ -101,7 +101,7 @@ class TodayQuestionView: UIView {
     
     private let verticalStackView = UIStackView().then {
         $0.axis = .vertical
-        $0.spacing = 29
+        $0.spacing = 40
         $0.distribution = .fill
         
     }

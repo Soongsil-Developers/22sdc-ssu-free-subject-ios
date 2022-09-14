@@ -32,6 +32,7 @@ class WriteViewController: UIViewController {
             self.isToday = isToday
             super.init(nibName: nil, bundle: nil)
         }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -63,6 +64,19 @@ class WriteViewController: UIViewController {
     let emotionalCheckView = EmotionalCheckView()
     let contentScrollView = ContentScrollView()
     let todayQuestionView = TodayQuestionView()
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "Drug Diary"
+        $0.font = UIFont(name: "Avenir-Black", size: 24)
+    }
+    
+     private let closeButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
+        $0.addTarget(self, action: #selector(closeButtonTap), for: .touchUpInside)
+        $0.tintColor = .black
+        $0.layer.cornerRadius = 16
+        $0.backgroundColor = UIColor.customColor(.defaultGrayColor)
+    }
     
     lazy var saveButton = UIButton().then {
         $0.setTitle("저장", for: .normal)
@@ -100,12 +114,25 @@ class WriteViewController: UIViewController {
     }
     
     func setUI() {
-        self.view.addSubview(contentScrollView)
-        self.view.addSubview(saveButton)
+        self.view.addSubviews(titleLabel, closeButton, contentScrollView, saveButton)
+
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(27)
+            $0.centerX.equalToSuperview()
+        }
+    
+        
+        closeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(27)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.width.equalTo(34)
+            $0.height.equalTo(34)
+        }
         
         contentScrollView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview().inset(200)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
         }
         
@@ -155,6 +182,10 @@ class WriteViewController: UIViewController {
         
     }
 
+    @objc func closeButtonTap() {
+        self.dismiss(animated: true)
+    }
+    
     
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -250 // Move view 150 points upward
@@ -165,8 +196,6 @@ class WriteViewController: UIViewController {
         self.view.frame.origin.y = 0
         // Move view to original position
     }
-    
-    
     
     @objc func saveButtonEnableCheck(_ noti: Notification) {
         saveButton.isEnabled = isMedicineCheckRight && isSleepTimeCheckRight && isTodayQuestionCheckRight && isEmojiCheckRight
