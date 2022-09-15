@@ -20,6 +20,7 @@ class Day: Object{
     @Persisted var thirdQuestion: String // 질문지에서 마지막 표에 대한 데이터
     
     @Persisted(primaryKey: true) var _id: ObjectId // primaryKey
+
     
     override static func primaryKey() -> String? {
       return "Date"

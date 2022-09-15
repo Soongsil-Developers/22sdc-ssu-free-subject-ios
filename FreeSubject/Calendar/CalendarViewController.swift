@@ -42,6 +42,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     
     override func viewWillAppear(_ animated: Bool) {
         setView()
+//        fsCalendar.reloadData()
     }
     
     func setView(){
@@ -85,20 +86,19 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         fsCalendar.appearance.eventSelectionColor = UIColor.green
         fsCalendar.appearance.headerDateFormat = "MM월 YYYY년"
         fsCalendar.appearance.todayColor = UIColor(red: 0.47, green: 0.86, blue: 0.63, alpha: 1.0)
-        // font
         fsCalendar.appearance.headerTitleFont = UIFont(name: "Avenir-Black", size: 22)
     }
     
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let isThisToday: Bool = isToday(calendarDate: date, todayDate: self.realTime)
-        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
+        dateFormatter.dateFormat = "YYYYMMdd"
         presentModalController(inputDate: dateFormatter.string(from: date), isThisToday: isThisToday)
         
     }
     // 캘린더의 선택한 날과 실제 날짜를 비교해서 Bool 값 리턴
     func isToday(calendarDate:Date,todayDate:Date)->Bool{
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "YYYYMMdd"
         let a = dateFormatter.string(from: calendarDate)
         let b = dateFormatter.string(from: todayDate)
         if(a == b){

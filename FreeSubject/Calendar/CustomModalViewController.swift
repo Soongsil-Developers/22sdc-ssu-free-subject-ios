@@ -7,14 +7,17 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class CustomModalViewController: UIViewController{
 
 
+    
     // 모달창에 뜨는 부분 날짜 표기
     var Date:String = ""
     var isToday:Bool = false
-    
+    var dateformatter = DateFormatter()
+
     // define lazy views
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -86,7 +89,7 @@ class CustomModalViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(Date)
+//        print(Date) // 년 월 일 형식
         print(isToday)
         view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
@@ -107,17 +110,31 @@ class CustomModalViewController: UIViewController{
         super.viewDidAppear(animated)
         animateShowDimmedView()
         animatePresentContainer()
+        // 모든 realm 의 데이터가 다 읽힌다
+        read()
+
     }
     
     @objc func dismissModal(_ sender: UIButton) {
-        
         guard let pvc = self.presentingViewController else { return }
         pvc.modalPresentationStyle = .fullScreen
         self.dismiss(animated: true) {
-//            pvc.present(WriteViewController(), animated: true, completion: nil)
             pvc.present(WriteViewController(isToday: self.isToday),animated: true,completion: nil)
         }
-        
+    }
+    
+    // 사용자가 선택한 캘린더의 날짜와 동일한 날짜의 데이터만 출력
+    private func read() {
+        guard let realm = try? Realm() else { return }
+        let models = realm.objects(Day.self)
+        print(self.Date)
+        for model in models {
+            if(model.createdDate == self.Date){
+                print(model._id,model.createdDate,model.iconFeeling,model.sleepTime,model.didFeelingChange,model.didTakeMedicine,model.firstQuestion,model.secondQuestion,model.thirdQuestion)
+            }else{
+                continue
+            }
+        }
     }
     
     
