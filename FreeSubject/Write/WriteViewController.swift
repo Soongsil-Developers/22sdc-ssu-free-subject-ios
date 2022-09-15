@@ -1,10 +1,8 @@
-//
 //  WriteViewController.swift
 //  FreeSubject
 //
 //
 //
-
 import UIKit
 import SnapKit
 import Then
@@ -32,6 +30,7 @@ class WriteViewController: UIViewController {
             self.isToday = isToday
             super.init(nibName: nil, bundle: nil)
         }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -43,7 +42,7 @@ class WriteViewController: UIViewController {
     var isTodayQuestionCheckRight: Bool = false
     
     //이모지
-    var getEmoji: String?
+    var getEmoji: Int?
     // 약복용 여부
     var medicineCheck: Bool?
     // 수면 시간
@@ -63,6 +62,19 @@ class WriteViewController: UIViewController {
     let emotionalCheckView = EmotionalCheckView()
     let contentScrollView = ContentScrollView()
     let todayQuestionView = TodayQuestionView()
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "Drug Diary"
+        $0.font = UIFont(name: "Avenir-Black", size: 24)
+    }
+    
+     private let closeButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
+        $0.addTarget(self, action: #selector(closeButtonTap), for: .touchUpInside)
+        $0.tintColor = .black
+        $0.layer.cornerRadius = 16
+        $0.backgroundColor = UIColor.customColor(.defaultGrayColor)
+    }
     
     lazy var saveButton = UIButton().then {
         $0.setTitle("저장", for: .normal)
@@ -100,12 +112,25 @@ class WriteViewController: UIViewController {
     }
     
     func setUI() {
-        self.view.addSubview(contentScrollView)
-        self.view.addSubview(saveButton)
+        self.view.addSubviews(titleLabel, closeButton, contentScrollView, saveButton)
+
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(27)
+            $0.centerX.equalToSuperview()
+        }
+    
+        
+        closeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(27)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.width.equalTo(34)
+            $0.height.equalTo(34)
+        }
         
         contentScrollView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview().inset(200)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
         }
         
@@ -127,7 +152,20 @@ class WriteViewController: UIViewController {
                           firstQuestion: firstQuestion ?? "불편한 거 없이 좋았어요.",
                           secondQuestion: secondQuestion ?? "특별한 사건이 없었어요.",
                           thirdQuestion: questionText!)
-
+        
+    
+        // 혹시 몰라 일단, 주석 처리했습니다.
+//        if calendar.isDateInToday(currentDate) {
+//            if self.todayTask?._id == nil {
+//                RealmService.shared.add(item: newTask)
+//
+//            } else {
+//                guard let task = self.todayTask else { return }
+//
+//                RealmService.shared.update(item: task, newTask: newTask)
+//            }
+//        }
+        
         // 여기에 오늘이 아니면 데이터 들어가지 않는 로직 구현
         if self.isToday == true{
             if self.todayTask?._id == nil {
@@ -136,24 +174,25 @@ class WriteViewController: UIViewController {
                 guard let task = self.todayTask else {return}
                 RealmService.shared.update(item: task, newTask: newTask)
             }
-        }else{
-            print("당일이 아닙니다.")
-        }
+        } else {
+            
+        }//확인만
         
     }
 
+    @objc func closeButtonTap() {
+        self.dismiss(animated: true)
+    }
+    
     
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -250 // Move view 150 points upward
-
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
         self.view.frame.origin.y = 0
         // Move view to original position
     }
-    
-    
     
     @objc func saveButtonEnableCheck(_ noti: Notification) {
         saveButton.isEnabled = isMedicineCheckRight && isSleepTimeCheckRight && isTodayQuestionCheckRight && isEmojiCheckRight
@@ -166,15 +205,18 @@ class WriteViewController: UIViewController {
     }
 }
 extension WriteViewController: MedicineCheckDelegate, SleepTimeCheckDelegate, TodayQuestionCheckDelegate, EmotionalCheckDelegate, EmojiViewCheckDelegate {
-
     func getEmoji(emoji: String) {
+        <#code#>
+    }
+    
+    func getEmoji(emoji: Int) {
         self.getEmoji = emoji
         
-        if self.getEmoji != "" {
+        if self.getEmoji != nil {
             self.isEmojiCheckRight = true
         }
-        
     }
+    
     
     func SleepTimeCheckEnabledSaveBtn(sleepTime: String) {
         self.sleepTime = sleepTime
