@@ -29,6 +29,19 @@ class CustomModalViewController: UIViewController{
         label.font = UIFont(name: "Avenir-Black", size: 15)
         return label
     }()
+    
+    // icon default
+    var imageFeeling = UIImageView(image: UIImage(named: "Happy"))
+    var imageDidGetMedicine = UIImageView(image: UIImage(named: "약미복용"))
+    var sleepTimeString = "00:00"
+    lazy var imageSleepTime :UILabel = {
+        let label = UILabel()
+        label.text = self.sleepTimeString
+        label.font = UIFont(name: "Avenir-Black", size: 23)
+        return label
+    }()
+    
+    
     lazy var iconView1: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
@@ -45,9 +58,11 @@ class CustomModalViewController: UIViewController{
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.74, green: 0.85, blue: 0.78, alpha: 1.00)
         view.layer.cornerRadius = 16
+        
         return view
     }()
 
+    
     // half-modal 뷰
     lazy var containerView: UIView = {
         let view = UIView()
@@ -67,7 +82,7 @@ class CustomModalViewController: UIViewController{
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)
         btn.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
-
+        
 
         return btn
     }()
@@ -87,7 +102,7 @@ class CustomModalViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(Date)
+        
         read()
         print(isToday)
         view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -116,7 +131,6 @@ class CustomModalViewController: UIViewController{
         guard let pvc = self.presentingViewController else { return }
         pvc.modalPresentationStyle = .fullScreen
         self.dismiss(animated: true) {
-//            pvc.present(WriteViewController(), animated: true, completion: nil)
             pvc.present(WriteViewController(isToday: self.isToday),animated: true,completion: nil)
         }
         
@@ -136,26 +150,95 @@ class CustomModalViewController: UIViewController{
         containerView.addSubview(iconView3)
         containerView.addSubview(titleLabel)
         containerView.addSubview(ButtonForNextView)
+        iconView1.addSubviews(imageFeeling)
+        iconView2.addSubviews(imageDidGetMedicine)
+        iconView3.addSubviews(imageSleepTime)
         
         setSNP()
     }
     
     // 사용자가 선택한 캘린더의 날짜와 동일한 날짜의 데이터만 출력
-        private func read() {
-            guard let realm = try? Realm() else { return }
-            let models = realm.objects(Day.self)
-            print(self.Date)
-            for model in models {
-                if(model.createdDate == self.Date){
-                    print(model._id,model.createdDate,model.iconFeeling,model.sleepTime,model.didFeelingChange,model.didTakeMedicine,model.firstQuestion,model.secondQuestion,model.thirdQuestion)
-                }else{
-                    continue
-                }
+    private func read() {
+        guard let realm = try? Realm() else { return }
+        let models = realm.objects(Day.self)
+        print(self.Date)
+        for model in models {
+            if(model.createdDate == self.Date){
+                print(model._id,model.createdDate,model.iconFeeling,model.sleepTime,model.didFeelingChange,model.didTakeMedicine,model.firstQuestion,model.secondQuestion,model.thirdQuestion)
+                changeToimageMedicine(iconBool: model.didTakeMedicine)
+                changeToimageFeelingIcon(iconInt: model.iconFeeling)
+                setSleepTime(iconString: model.sleepTime)
+            }else{
+                continue
             }
         }
+    }
+    
+    // change Realm data to class data
+    func setSleepTime(iconString:String){
+        self.sleepTimeString = iconString
+    }
+    // change Realm data to class data
+    func changeToimageFeelingIcon(iconInt:Int){
+        switch iconInt {
+        case 0:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Happy"))
+            break
+        case 1:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Tranquility"))
+            break
+        case 2:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Tough"))
+            break
+        case 3:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Sad"))
+            break
+        case 4:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Tired"))
+            break
+        case 5:
+            self.imageFeeling = UIImageView(image: UIImage(named: "Angry"))
+            break
+        default:
+            break
+        }
+    }
+    // change Realm data to class data
+    func changeToimageMedicine(iconBool:Bool){
+        if iconBool == true{
+            self.imageDidGetMedicine = UIImageView(image: UIImage(named: "약복용"))
+        }
+        else{
+            self.imageDidGetMedicine = UIImageView(image: UIImage(named: "약미복용"))
+        }
+    }
+    
+    
+    
+        
 
     
     func setSNP(){
+        imageSleepTime.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(15)
+            make.leading.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-15)
+        }
+        
+        imageFeeling.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-15)
+            make.right.equalToSuperview().offset(-15)
+        }
+        
+        imageDidGetMedicine.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-15)
+            make.right.equalToSuperview().offset(-15)
+        }
+        
         titleLabel.snp.makeConstraints{ make in
             make.top.equalTo(containerView).offset(33)
             make.trailing.equalTo(containerView).inset(40)
