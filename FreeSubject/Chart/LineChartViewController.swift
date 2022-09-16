@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import QuartzCore
+import RealmSwift
+
 class LineChartViewController: UIViewController, LineChartDelegate {
 
     var label = UILabel()
@@ -17,10 +19,11 @@ class LineChartViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        read()
         view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         var views: [String: AnyObject] = [:]
         
-        label.text = "8월 누적 통계입니다."
+        label.text = "9월 누적 통계입니다."
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
@@ -30,10 +33,10 @@ class LineChartViewController: UIViewController, LineChartDelegate {
         
         // simple arrays
         let data: [CGFloat] = [3, 4, -2, 11, 13, 15]
-        let data2: [CGFloat] = [1, 3, 5, 13, 17, 20]
+//        let data2: [CGFloat] = [1, 3, 5, 13, 17, 20]
         
         // simple line with custom x axis labels
-        let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+        let xLabels: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","hi"]
         
         lineChart = LineChart()
         lineChart.animation.enabled = true
@@ -44,7 +47,7 @@ class LineChartViewController: UIViewController, LineChartDelegate {
         lineChart.x.labels.values = xLabels
         lineChart.y.labels.visible = true
         lineChart.addLine(data)
-        lineChart.addLine(data2)
+//        lineChart.addLine(data2)
         
         lineChart.translatesAutoresizingMaskIntoConstraints = false
         lineChart.delegate = self
@@ -67,6 +70,30 @@ class LineChartViewController: UIViewController, LineChartDelegate {
 //        println(linear(x: 2.5)) // 50
 //        println(invert(x: 50)) // 2.5
         
+    }
+    
+    
+    var inputNumForChart:[Int] = []
+    var DateSortResult:[Int] = []
+    
+    struct DataForChart{
+        var Date:Int = 0
+        var inputNum:Int = 0
+    }
+    
+    var ArrayForNum:[DataForChart] = []
+    
+    private func read() {
+        guard let realm = try? Realm() else { return }
+        let models = realm.objects(Day.self)
+        for model in models {
+            inputNumForChart += [model.iconFeeling]
+            let mdl = DataForChart(Date: Int(model.createdDate) ?? 000000, inputNum: model.iconFeeling)
+            ArrayForNum += [mdl]
+        }
+        // createdDate 을 String -> Int 로 변환하고 날짜를 기준으로 오름차순
+        let newArrayForChart = ArrayForNum.sorted(by:{$0.Date < $1.Date})
+        print(newArrayForChart)
     }
     
     
