@@ -17,10 +17,10 @@ class LineChartViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor(red: 0.94, green: 0.97, blue: 0.95, alpha: 1.0)
         var views: [String: AnyObject] = [:]
         
-        label.text = "..."
+        label.text = "8월 누적 통계입니다."
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
