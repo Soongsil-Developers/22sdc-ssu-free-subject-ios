@@ -109,6 +109,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         }
     }
     
+    
     // To be updated
     func presentModalController(inputDate:String,isThisToday:Bool) {
         let vc = CustomModalViewController()
@@ -146,4 +147,8 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         }
     }
 
+    
+    
+    
+    
 }
