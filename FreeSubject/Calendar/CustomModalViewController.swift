@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class CustomModalViewController: UIViewController{
 
@@ -87,6 +88,7 @@ class CustomModalViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print(Date)
+        read()
         print(isToday)
         view.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
@@ -137,6 +139,21 @@ class CustomModalViewController: UIViewController{
         
         setSNP()
     }
+    
+    // 사용자가 선택한 캘린더의 날짜와 동일한 날짜의 데이터만 출력
+        private func read() {
+            guard let realm = try? Realm() else { return }
+            let models = realm.objects(Day.self)
+            print(self.Date)
+            for model in models {
+                if(model.createdDate == self.Date){
+                    print(model._id,model.createdDate,model.iconFeeling,model.sleepTime,model.didFeelingChange,model.didTakeMedicine,model.firstQuestion,model.secondQuestion,model.thirdQuestion)
+                }else{
+                    continue
+                }
+            }
+        }
+
     
     func setSNP(){
         titleLabel.snp.makeConstraints{ make in

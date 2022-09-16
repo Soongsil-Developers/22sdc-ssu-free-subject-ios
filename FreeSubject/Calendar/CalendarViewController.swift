@@ -92,7 +92,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
     // 날짜 선택 -> 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let isThisToday: Bool = isToday(calendarDate: date, todayDate: self.realTime)
-        dateFormatter.dateFormat = "YYYY년 MM월 dd일"
+        dateFormatter.dateFormat = "YYYYMMdd"
         presentModalController(inputDate: dateFormatter.string(from: date), isThisToday: isThisToday)
         
     }
