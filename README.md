@@ -1,5 +1,5 @@
 # 22sdc-ssu-free-subject-ios
-### ** 팀원 **
+### **팀원**
 
 iOS : 2명, UI & UX 디자이너 : 1명
 
