@@ -16,8 +16,6 @@ import Realm
 
 class WriteViewController: UIViewController {
 
-
-    
     let dateFormatter = DateFormatter()
     var isToday:Bool  = false
     let realTime = Date()
@@ -25,6 +23,7 @@ class WriteViewController: UIViewController {
     var todayTask: Day?
     
     var stdDate: String?
+
     
     let calendar: Calendar = Calendar.current
     
@@ -156,19 +155,6 @@ class WriteViewController: UIViewController {
                           secondQuestion: secondQuestion ?? "특별한 사건이 없었어요.",
                           thirdQuestion: questionText!)
         
-    
-        // 혹시 몰라 일단, 주석 처리했습니다.
-//        if calendar.isDateInToday(currentDate) {
-//            if self.todayTask?._id == nil {
-//                RealmService.shared.add(item: newTask)
-//
-//            } else {
-//                guard let task = self.todayTask else { return }
-//
-//                RealmService.shared.update(item: task, newTask: newTask)
-//            }
-//        }
-        
         // 여기에 오늘이 아니면 데이터 들어가지 않는 로직 구현
         if self.isToday == true{
             if self.todayTask?._id == nil {
@@ -178,8 +164,9 @@ class WriteViewController: UIViewController {
                 RealmService.shared.update(item: task, newTask: newTask)
             }
         } else {
-            
+
         }//확인만
+
         
     }
 
