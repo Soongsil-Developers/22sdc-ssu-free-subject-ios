@@ -13,11 +13,11 @@
 		690DDC9F28B7D5FB00C278E1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690DDC9E28B7D5FB00C278E1 /* RealmSwift */; };
 		695C882728CF147D00AE977F /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C882628CF147D00AE977F /* RealmService.swift */; };
 		911A171B28C1ABDB009B4376 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */; };
+		918D200E28D4F2C300C68EE2 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D200D28D4F2C300C68EE2 /* LineChart.swift */; };
 		9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9191481928BB52710006BFC7 /* CustomTabBarController.swift */; };
 		91B45FCB28C098B200BFF72D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 91B45FCA28C098B200BFF72D /* Charts */; };
 		91BED6D528C86BAD00837AFF /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */; };
 		91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6DA28C880ED00837AFF /* LineChartViewController.swift */; };
-		91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BED6E028C8901B00837AFF /* LineChartView.swift */; };
 		91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */; };
 		91D85F1A28BA7993009AAFDA /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 91D85F1928BA7993009AAFDA /* FSCalendar */; };
 		91F040D828C646FA0049CAA7 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F040D728C646FA0049CAA7 /* Day.swift */; };
@@ -42,10 +42,10 @@
 /* Begin PBXFileReference section */
 		695C882628CF147D00AE977F /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		911A171A28C1ABDB009B4376 /* CustomModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalViewController.swift; sourceTree = "<group>"; };
+		918D200D28D4F2C300C68EE2 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		9191481928BB52710006BFC7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		91BED6D428C86BAD00837AFF /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		91BED6DA28C880ED00837AFF /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
-		91BED6E028C8901B00837AFF /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		91D85F1628BA4C9A009AAFDA /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		91F040D728C646FA0049CAA7 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		C35EB13328B3598A006AFA0A /* FreeSubject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSubject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				91BED6DA28C880ED00837AFF /* LineChartViewController.swift */,
-				91BED6E028C8901B00837AFF /* LineChartView.swift */,
+				918D200D28D4F2C300C68EE2 /* LineChart.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -279,12 +279,12 @@
 				91D85F1728BA4C9B009AAFDA /* CalendarViewController.swift in Sources */,
 				C3CAE15D28CA250A00BD504D /* EmotionalCheckView.swift in Sources */,
 				C3CAE16228CA250A00BD504D /* UIStackView+.swift in Sources */,
+				918D200E28D4F2C300C68EE2 /* LineChart.swift in Sources */,
 				91BED6DB28C880ED00837AFF /* LineChartViewController.swift in Sources */,
 				9191481A28BB52710006BFC7 /* CustomTabBarController.swift in Sources */,
 				C3CAE16128CA250A00BD504D /* UIView+.swift in Sources */,
 				C3CAE15F28CA250A00BD504D /* TodayQuestionView.swift in Sources */,
 				C35EB13728B3598A006AFA0A /* AppDelegate.swift in Sources */,
-				91BED6E128C8901B00837AFF /* LineChartView.swift in Sources */,
 				C3CAE15C28CA250A00BD504D /* MedicineCheckView.swift in Sources */,
 				C3CAE16028CA250A00BD504D /* EmojiStackView.swift in Sources */,
 				91F040D828C646FA0049CAA7 /* Day.swift in Sources */,
@@ -425,6 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D96A3BCL3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -454,6 +455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D96A3BCL3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
