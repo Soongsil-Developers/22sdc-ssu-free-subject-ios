@@ -428,6 +428,7 @@
 				DEVELOPMENT_TEAM = D96A3BCL3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Drug Diary";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -458,6 +459,7 @@
 				DEVELOPMENT_TEAM = D96A3BCL3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeSubject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Drug Diary";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
