@@ -62,6 +62,7 @@ class LineChartViewController: UIViewController, LineChartDelegate {
         lineChart.area = true
         lineChart.x.labels.visible = true
         lineChart.x.grid.count = 5
+        // hi
         lineChart.y.grid.count = 5
         lineChart.x.labels.values = xLabels
         lineChart.y.labels.visible = true

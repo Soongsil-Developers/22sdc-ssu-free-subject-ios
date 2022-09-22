@@ -82,8 +82,7 @@ class CustomModalViewController: UIViewController{
         btn.layer.cornerRadius = 16
         btn.backgroundColor = UIColor(red: 0.49, green: 0.65, blue: 0.56, alpha: 1.0)
         btn.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
-        
-
+    
         return btn
     }()
     
