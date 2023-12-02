@@ -1,29 +1,37 @@
-# 22sdc-ssu-free-subject-ios
-### **팀원**
+# DrugDiary
 
-iOS : 2명
+![g 1](https://github.com/Soongsil-Developers/22sdc-ssu-free-subject-ios/assets/25146374/ec38203c-33de-4498-8781-19efa89b0368)
 
-UI & UX 디자이너 : 1명
+> ***정신질환 복용 환자를 위한 메모 서비스***
+> 
+> **SSU DEVCAMP**
+>
+> **v1.0.0 개발기간: 2022.08 ~ 2023.09 (3주)**
 
-### **필요 스택**
+# ✨ 프로젝트 주요 화면
 
-디자인 : 
-figma
+![레포 사진 만들기 복사본 001](https://github.com/Soongsil-Developers/22sdc-ssu-free-subject-ios/assets/25146374/f2c93ae2-a470-449e-a642-fee72b0e32e5)
 
-iOS 개발 : 
-UIKit, MVC,
-XCode 13.2 / iOS 15
-SnapKit
-then
-FSCalendar
-CoreData, Realm
+### 주요 기능
 
-### **프로젝트 설명**
+- 감정과 수면시간, 약 복용 여부 등 복용 일지 기록
+- 날짜 별 복용 일지 조회, 수정 기능
+
+# **⚙️ 개발환경 및 기술스택**
+
+- Minimum Deployments: iOS 15.0
+- Dependence Manager : SPM
+- Swift Version: 5.5.2
+- `UIKit` `MVC`
+- `Codebase UI` `SnapKit` `Then`
+- `FSCalendar` `RealmSwift`
+
+# **프로젝트 설명**
 
 모바일 서비스 기준으로 위의 기술스택을 활용하여 팀 멤버들끼리 만들고싶은 B2C 서비스 혹은 개발자들에게 도움이 되는 모바일 오픈소스 프로젝트를 개발해봅니다.
 어떤 프로젝트를 개발하느냐에 중심을 두기보다는, 위의 기술스택을 활용하여 코드와 아키텍쳐 퀄리티를 얼마나 좋게 할 수 있을지가 중요합니다.
 
-#### 정신질환자에게 맞는 약물을 찾을 수 있도록 도움을 주는 어플 - Drug Diary
+## 정신질환자에게 맞는 약물을 찾을 수 있도록 도움을 주는 어플 - Drug Diary
 
 1. 정신질환자에게 가장 먼저 필요한것은 정신질환을 치료하는 것보다 환자에게 맞는 약을 찾는것이 중요하다
 2. 많은 경우, 자신에게 맞는 약을 찾기전까지 굉장히 힘든 과정을 겪는다. 약물을 찾은 이후에는 일상생활도 무리 없이 하는 환자들이 많다. 맞다고 생각한 약물도 시간이 지나면 맞지 않아 힘듬을 겪는 일이 많다고 한다. 
